@@ -6,6 +6,10 @@ import PaginationList from "./components/PaginationList";
 import Footer from "./components/Footer";
 import reactData from "./data/reactData";
 import jsData from "./data/data";
+import reduxData from "./data/reduxData";
+import htmlData from "./data/htmlData";
+import cssData from "./data/cssData";
+
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 function App() {
   const [count, setCount] = useState(0);
@@ -20,9 +24,9 @@ function App() {
             <Route path="/" element={<Navigate to="/javascript" />} />
             <Route path="/reactjs" element={<PaginationList data={reactData} />} />
             <Route path="/javascript" element={<PaginationList data={jsData} />} />
-            {/* <Route path="/redux" element={<PaginationList data={reduxData} />} />
+            <Route path="/redux" element={<PaginationList data={reduxData} />} />
             <Route path="/html" element={<PaginationList data={htmlData} />} />
-            <Route path="/css" element={<PaginationList data={cssData} />} /> */}
+            <Route path="/css" element={<PaginationList data={cssData} />} />
           </Routes>
         </Box>
         <Footer />
