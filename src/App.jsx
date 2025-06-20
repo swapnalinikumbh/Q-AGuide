@@ -17,7 +17,7 @@ function App() {
         <Header />
         <Box sx={{ px: 2, py: 2 }}>
           <Routes>
-            <Route path="/" element={<Navigate to="/reactjs" />} />
+            <Route path="/" element={<Navigate to="/javascript" />} />
             <Route path="/reactjs" element={<PaginationList data={reactData} />} />
             <Route path="/javascript" element={<PaginationList data={jsData} />} />
             {/* <Route path="/redux" element={<PaginationList data={reduxData} />} />
