@@ -1,5 +1,16 @@
-import { useState } from "react";
-import { Pagination, Card, CardContent, Typography, Box } from "@mui/material";
+import { useMemo, useState } from "react";
+import {
+  Pagination,
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  Paper,
+  InputBase,
+  IconButton,
+  Divider,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import js from "react-syntax-highlighter/dist/esm/languages/hljs/javascript";
 import docco from "react-syntax-highlighter/dist/esm/styles/hljs/docco";
@@ -8,15 +19,60 @@ SyntaxHighlighter.registerLanguage("javascript", js);
 
 export default function PaginationList({ data }) {
   const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
 
   const handleChange = (_, value) => setPage(value);
   const ITEMS_PER_PAGE = 10;
-  const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+
+  const filteredData = useMemo(() => {
+    return data.filter((item) =>
+      item.question.toLowerCase().includes(search.toLowerCase())
+    );
+  }, [search, data]);
+  // const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+  // const startIndex = (page - 1) * ITEMS_PER_PAGE;
+  // const currentData = data.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
-  const currentData = data.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const currentData = filteredData.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
 
   return (
     <Box p={{ xs: 1, sm: 2, md: 3 }}>
+      {/* Search Box */}
+      <Paper
+        component="form"
+        sx={{
+          p: "2px 4px",
+          mb: 3,
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
+          maxWidth: 500,
+          mx: "auto",
+          boxShadow: 2,
+        }}
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Search by question..."
+          value={search}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setPage(1); // Reset to page 1 on search
+          }}
+          inputProps={{ "aria-label": "search questions" }}
+        />
+        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+          <SearchIcon />
+        </IconButton>
+      </Paper>
+
+      {/* Card */}
       {currentData.map((item) => (
         <Card
           key={item.id}
