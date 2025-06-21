@@ -20,8 +20,12 @@ SyntaxHighlighter.registerLanguage("javascript", js);
 export default function PaginationList({ data }) {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+ 
+  const handleChange = (_, value) => {
+  setPage(value);
+  window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top on page change
+};
 
-  const handleChange = (_, value) => setPage(value);
   const ITEMS_PER_PAGE = 10;
 
   const filteredData = useMemo(() => {
@@ -29,9 +33,7 @@ export default function PaginationList({ data }) {
       item.question.toLowerCase().includes(search.toLowerCase())
     );
   }, [search, data]);
-  // const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
-  // const startIndex = (page - 1) * ITEMS_PER_PAGE;
-  // const currentData = data.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
   const currentData = filteredData.slice(

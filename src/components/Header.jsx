@@ -15,7 +15,16 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
-const navItems = ["JavaScript", "ReactJS", "Redux", "HTML", "CSS"];
+// const navItems = ["JavaScript", "ReactJS", "Redux", "HTML", "CSS", "JS Practice"];
+const navItems = [
+  { label: "JavaScript", path: "javascript" },
+  { label: "ReactJS", path: "reactjs" },
+  { label: "Redux", path: "redux" },
+  { label: "HTML", path: "html" },
+  { label: "CSS", path: "css" },
+  { label: "JS Practice", path: "jspractice" }, // ✅ No space in `path`
+];
+
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -31,10 +40,10 @@ export default function Header() {
       </Typography>
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item.path} disablePadding>
             <ListItemButton
               component={NavLink}
-              to={`/${item.toLowerCase()}`}
+              to={`/${item.path}`}
               sx={{
                 textAlign: "center",
                 color: "#333",
@@ -44,7 +53,7 @@ export default function Header() {
                 },
               }}
             >
-              <ListItemText primary={item} />
+              <ListItemText primary={item.label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -89,11 +98,11 @@ export default function Header() {
 
           {/* Desktop menu */}
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
-            {navItems.map((cat) => (
+            {navItems.map((item) => (
               <Button
-                key={cat}
+                key={item.path}
                 component={NavLink}
-                to={`/${cat.toLowerCase()}`}
+                to={`/${item.path}`}
                 sx={{
                   color: "white",
                   fontWeight: 500,
@@ -111,7 +120,7 @@ export default function Header() {
                   },
                 }}
               >
-                {cat}
+                {item.label}
               </Button>
             ))}
           </Box>
