@@ -14,9 +14,9 @@ const jsdata = [
   {
     id: 3,
     question: `What is object.freeze() and const?`,
-    answer: `Object.freeze() that makes an object immutable at the top level. Once an object is frozen, you cannot add, delete, or modify its existing properties. It's important to note that this is a shallow freeze, meaning if the object contains nested objects, those inner objects can still be modified unless they are also frozen. We typically use Object.freeze() to protect configuration objects or constants from accidental changes."
+    answer: `Object.freeze() that makes an object immutable at the top level. Once an object is frozen, you cannot add, delete, or modify its existing properties. It's important to note that this is a shallow freeze, meaning if the object contains nested objects, those inner objects can still be modified unless they are also frozen. We typically use Object.freeze() to protect configuration objects or constants from accidental changes.
     
-    "const in JavaScript is used to declare variables whose reference cannot be reassigned after initialization. However, if the variable points to an object or array, the contents of that object can still be modified — because const protects the binding, not the value itself. This makes const useful for declaring constants or ensuring that a variable name can't point to something else later in the code."`,
+    const in JavaScript is used to declare variables whose reference cannot be reassigned after initialization. However, if the variable points to an object or array, the contents of that object can still be modified — because const protects the binding, not the value itself. This makes const useful for declaring constants or ensuring that a variable name can't point to something else later in the code.`,
     example: `const settings = Object.freeze({ theme: "dark" });
 settings.theme = "light"; // ❌ Won’t work – object is frozen
 console.log(settings.theme); // ✅ still "dark"
@@ -36,7 +36,8 @@ let obj = { a: 1 };`,
   {
     id: 5,
     question: `Closures in JS?`,
-    answer: `In JavaScript, a closure is a function that has access to the variables and parameters of its outer (enclosing) function, even after the outer function has finished executing. Closures are a fundamental concept in JavaScript and are always used to create private variables, maintain state, and wrap functionality. -They are commonly used in JavaScript for tasks like data hiding, event handling, and creating modular code structures.`,
+    answer: `In JavaScript, a closure is a function that has access to the variables and parameters of its outer (enclosing) function, even after the outer function has finished executing. Closures are a fundamental concept in JavaScript and are always used to create private variables, maintain state, and wrap functionality. 
+    -They are commonly used in JavaScript for tasks like data hiding, event handling, and creating modular code structures.`,
     example: `function outer() {
   let count = 0; // local to outer
   return function inner() {
@@ -94,9 +95,9 @@ const arr = [1, 2, 3];
 const newArr = [...arr];
 console.log(newArr); // [1, 2, 3]
 
-const obj = { name: "Swapnali" };
+const obj = { name: " Arjun" };
 const newObj = { ...obj, age: 25 };
-console.log(newObj); // { name: "Swapnali", age: 25 }
+console.log(newObj); // { name: " Arjun", age: 25 }
 
 //Rest
 function sum(...numbers) {
@@ -112,7 +113,8 @@ console.log(rest);  // [20, 30]
   {
     id: 8,
     question: `Difference between null and undefined?`,
-    answer: `null: empty by intent. undefined: declared but not assigned.`,
+    answer: `null: empty by intent. 
+    undefined: declared but not assigned.`,
     example: `let a;
 console.log(a); // undefined → declared but not assigned
 
@@ -200,8 +202,7 @@ const obj = JSON.parse(str);`,
 // Using the Promise
 fetchData()
   .then((result) => console.log(result))    // Data loaded successfully
-  .catch((error) => console.error(error));  // If failed
-`,
+  .catch((error) => console.error(error));  // If failed`,
   },
   {
     id: 15,
@@ -224,10 +225,10 @@ console.log(user?.info?.name);`,
     Object Destructuring: Extract values from objects by creating variables with the same names as the object's properties.
     
     Array Destructuring: Allows to extract values from arrays by their position (index).`,
-    example: `const person = { name: "Swapnali", age: 25 };
+    example: `const person = { name: " Arjun", age: 25 };
 // Extracting values
 const { name, age } = person;
-console.log(name); // Swapnali
+console.log(name); //  Arjun
 console.log(age);  // 25
 
 const numbers = [10, 20, 30];
@@ -245,21 +246,21 @@ console.log(role);     // guest
   {
     id: 18,
     question: `What are callbacks?`,
-    answer: `A function passed to another function. function that is passed as an argument to another function and is executed after a specific event or condition occurs.commonly used in asynchronous operations like fetching data from a server, handling user events, and more. "callback hell" or "Pyramid of Doom," where deeply nested callbacks make code hard to read and maintain. To address this, JavaScript introduced Promises and, more recently, async/await syntax, which provide cleaner and more structured ways to handle asynchronous operations.`,
+    answer: `A function passed to another function. function that is passed as an argument to another function and is executed after a specific event or condition occurs. commonly used in asynchronous operations like fetching data from a server, handling user events, and more. "callback hell" or "Pyramid of Doom," where deeply nested callbacks make code hard to read and maintain. To address this, JavaScript introduced Promises and, more recently, async/await syntax, which provide cleaner and more structured ways to handle asynchronous operations.`,
     example: `function greet(name, callback) {
-  console.log("Hello, " + name);
+  console.log("Hello, " + name); //Hello,  Arjun
   callback(); // call the function passed as an argument
 }
 function sayBye() {
   console.log("Goodbye!");
 }
-greet("Swapnali", sayBye);
+greet(" Arjun", sayBye); //Goodbye!
 
 //Callback in Asynchronous Code
 setTimeout(() => {
   console.log("Task complete after 1 second");
 }, 1000);
-`,
+//Task complete after 1 second`,
   },
   {
     id: 19,
@@ -293,7 +294,7 @@ function greet(name) {
 function processUser(name, callback) {
   return callback(name);
 }
-console.log(processUser("Swapnali", greet)); // Hello Swapnali
+console.log(processUser(" Arjun", greet)); // Hello  Arjun
 };
 
 //Returns a Function
@@ -423,7 +424,7 @@ console.log(add(1)(2)(3)); // 6`,
     
     bind() doesn't call the function right away — it returns a new function with this and optional arguments pre-set. call: fn.call(obj, arg1, arg2). apply: fn.apply(obj, [args]). bind: returns new function.`,
     example: `const person = {
-  name: "Swapnali",
+  name: " Arjun",
 };
 function greet(greeting, punctuation) {
   console.log(\`\${greeting}, \${this.name}\${punctuation}\`);
@@ -431,16 +432,16 @@ function greet(greeting, punctuation) {
 
 //call
 greet.call(person, "Hello", "!"); 
-// Output: Hello, Swapnali!
+// Output: Hello,  Arjun!
 
 //apply
 greet.apply(person, ["Hi", "!!"]); 
-// Output: Hi, Swapnali!!
+// Output: Hi,  Arjun!!
 
 //bind
 const greetPerson = greet.bind(person, "Hey", "...");
 greetPerson(); 
-// Output: Hey, Swapnali...`,
+// Output: Hey,  Arjun...`,
   },
   {
     id: 32,
@@ -520,7 +521,7 @@ menu.addEventListener("click", function (event) {
   {
     id: 39,
     question: `Difference between forEach and map?`,
-    answer: `forEach:used when we want to perform some action for each element in the array but do not need to create a new array based on the results. -We can use forEach to modify the original array.  no return. 
+    answer: `forEach: used when we want to perform some action for each element in the array but do not need to create a new array based on the results. -We can use forEach to modify the original array.  no return. 
     
     map: creates a new array by applying a provided function to each element in the original array. returns new array.`,
     example: `//forEach
@@ -724,9 +725,9 @@ let a = 5; // ReferenceError`,
     question: `What is an IIFE?`,
     answer: `Immediately invoked function expression. An IIFE is a function in JavaScript that runs immediately after it's defined. It’s useful when you want to execute some code once and keep variables private, so they don't pollute the global scope."`,
     example: `(function () {
-  const name = "Swapnali";
+  const name = " Arjun";
   console.log("Hello", name);
-})(); // Output: Hello Swapnali
+})(); // Output: Hello  Arjun
 
 //Arrow Function IIFE
 (() => {
@@ -752,6 +753,86 @@ A.prototype.sayHi = () => 'hi';`,
     answer: `async APIs like setTimeout, fetch.`,
     example: `const worker = new Worker('task.js');`,
   },
+  {
+    id:64,
+    question:`conditional rendering`,
+    answer:`if statement, Ternary operator, Logical AND, ? : inside JSX, switch statement. Conditional rendering is a technique in React (and JavaScript in general) that allows you to render different components or elements based on certain conditions. This is useful for displaying different content based on user state, data availability, or any other condition.`,
+    example:`//Using if statement
+if (isLoggedIn) {
+  return <Dashboard />;
+} else {
+  return <Login />;
+}
+
+//Using Ternary Operator
+{isLoggedIn ? <Dashboard /> : <Login />}
+
+//Using && (logical AND)
+{isAdmin && <AdminPanel />}
+
+//Using ? : inside JSX
+<h1>{score > 50 ? "Pass" : "Fail"}</h1>
+
+//using switch statement
+switch (status) {
+  case "loading":
+    return <Loading />;
+  case "error":
+    return <Error />;
+  default:
+    return <Content />;
+}`,
+  },
+  {
+    id: 65,
+    question: `Lexical Scope and Scope Chain?`,
+    answer: `Lexical scope a function can access variables from its parent (outer) scope, but not vice versa.
+    The scope chain is the hierarchy of scopes that JavaScript uses to resolve variable references. When a variable is accessed, JavaScript first looks in the current scope, then in the parent scope, and continues up the chain until it finds the variable or reaches the global scope.`,
+    example: `function outer() {
+  const a = 10;
+  function inner() {
+    console.log(a); // ✅ can access \`a\` from outer
+  }
+  inner();
+}
+outer();
+
+function outer() {
+  function inner() {
+    const b = 5;
+  }
+  console.log(b); // ❌ Error: b is not defined
+}
+outer();
+
+// Scope Chain Example
+const globalVar = "🌍 Global";
+function outer() {
+  const outerVar = "🌐 Outer";
+  function inner() {
+    const innerVar = "🔒 Inner";
+    console.log(innerVar);   // ✅ Found in inner scope
+    console.log(outerVar);   // ✅ Found in outer (parent) scope
+    console.log(globalVar);  // ✅ Found in global scope
+  }
+  inner();
+}
+
+outer();
+// Output:
+// 🔒 Inner
+// 🌐 Outer
+// 🌍 Global
+
+function outer() {
+  function inner() {
+    const secret = "I’m hidden";
+  }
+  console.log(secret); // ❌ Error: secret is not defined
+}
+outer();
+`,
+  }
 ];
 
 export default jsdata;
