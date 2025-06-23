@@ -682,9 +682,44 @@ debouncedSearch("React"); // ✅ Only this one will run after 500ms`,
   },
   {
     id: 54,
-    question: `SessionStorage vs LocalStorage?`,
-    answer: `sessionStorage: per tab. localStorage: persists across tabs/sessions.`,
-    example: `localStorage.setItem('name','value');`,
+    question: `What is the difference between SessionStorage, LocalStorage, and Cookies?`,
+    answer: `SessionStorage, LocalStorage, and Cookies are all used for client-side storage in the browser, but they differ in scope, persistence, and use cases.
+
+🔸 SessionStorage:
+- Scope: Data is stored per tab/session.
+- Persistence: Cleared automatically when the browser tab or window is closed.
+- Storage Limit: ~5MB.
+- Accessibility: Only accessible within the same tab that stored it.
+- Use Case: Temporary data like a user filling out a form or step-by-step wizards.
+
+🔸 LocalStorage:
+- Scope: Shared across all tabs and windows from the same origin.
+- Persistence: Persists even after the browser is closed or system restarts.
+- Storage Limit: ~5–10MB.
+- Accessibility: Synchronous API, available on window.localStorage.
+- Use Case: Store user preferences, tokens (not secure), light caching.
+
+🔸 Cookies:
+- Scope: Sent with every HTTP request (can be scoped to a path/domain).
+- Persistence: Can have expiry dates (session cookies disappear after closing browser).
+- Storage Limit: ~4KB.
+- Accessibility: Accessible both on client-side and server-side.
+- Use Case: Authentication, session tracking, remembering logged-in user across reloads.
+
+🛡️ Security Note:
+- Never store sensitive information (e.g., passwords, tokens) in LocalStorage or SessionStorage due to XSS risks.
+- Cookies with \`HttpOnly\` and \`Secure\` flags are more secure for authentication.`,
+    example: `// LocalStorage Example
+  localStorage.setItem("theme", "dark");
+  const theme = localStorage.getItem("theme");
+
+  // SessionStorage Example
+  sessionStorage.setItem("step", "2");
+  const step = sessionStorage.getItem("step");
+
+  // Cookie Example
+  document.cookie = "username=John; expires=Fri, 31 Dec 2025 23:59:59 GMT; path=/";
+  const cookies = document.cookie;`,
   },
   {
     id: 55,
@@ -754,10 +789,10 @@ A.prototype.sayHi = () => 'hi';`,
     example: `const worker = new Worker('task.js');`,
   },
   {
-    id:64,
-    question:`conditional rendering`,
-    answer:`if statement, Ternary operator, Logical AND, ? : inside JSX, switch statement. Conditional rendering is a technique in React (and JavaScript in general) that allows you to render different components or elements based on certain conditions. This is useful for displaying different content based on user state, data availability, or any other condition.`,
-    example:`//Using if statement
+    id: 64,
+    question: `conditional rendering`,
+    answer: `if statement, Ternary operator, Logical AND, ? : inside JSX, switch statement. Conditional rendering is a technique in React (and JavaScript in general) that allows you to render different components or elements based on certain conditions. This is useful for displaying different content based on user state, data availability, or any other condition.`,
+    example: `//Using if statement
 if (isLoggedIn) {
   return <Dashboard />;
 } else {
@@ -832,7 +867,7 @@ function outer() {
 }
 outer();
 `,
-  }
+  },
 ];
 
 export default jsdata;
