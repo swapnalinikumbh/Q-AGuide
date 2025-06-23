@@ -22,7 +22,7 @@ const navItems = [
   { label: "Redux", path: "redux" },
   { label: "HTML", path: "html" },
   { label: "CSS", path: "css" },
-  { label: "JS Practice", path: "jspractice" }, // ✅ No space in `path`
+  { label: "JS Practice", path: "jspractice", }, // ✅ No space in `path`
 ];
 
 

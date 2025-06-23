@@ -168,5 +168,21 @@ export const cssData = [
 </body>
 </html>`,
   },
+  {
+  id: 22,
+  question: 'What is box-sizing: border-box in CSS?',
+  answer: `The CSS property 'box-sizing: border-box' tells the browser to include the element's padding and border within the specified width and height. This means the total size of the element won't increase when you add padding or borders — it stays constrained to the declared width/height.`,
+  example: `div {
+  width: 200px;
+  padding: 20px;
+  border: 5px solid black;
+  box-sizing: border-box;
+}
+
+/* The total width of the element will still be 200px,
+   not 200 + 20*2 + 5*2 = 250px */
+`
+},
+
 ];
 export default cssData;
