@@ -88,10 +88,50 @@ export const cssData = [
   },
   {
     id: 14,
-    question: `What are default and other position values in CSS? `,
-    answer: `The default position is \`static\`, where elements follow normal flow. Others:\n- \`relative\`: keeps flow position, allows offset.\n- \`absolute\`: removed from flow, positioned relative to nearest positioned ancestor.\n- \`fixed\`: relative to viewport.\n- \`sticky\`: toggles between relative and fixed based on scroll. `,
-    example: `.box { position: absolute; top: 10px; left: 20px; }`,
+    question: `What are default and other position values in CSS?`,
+    answer: `The \`position\` property in CSS determines how an element is placed in the document flow and how it behaves in relation to other elements.
+
+1. "static (default)":
+   - Elements are positioned according to the normal document flow (top to bottom).
+   - Top, right, bottom, left properties "do not apply".
+   - This is the default behavior of all HTML elements unless overridden.
+
+2. "relative":
+   - The element stays in the normal flow, occupying space as usual.
+   - But it can be moved visually using \`top\`, \`right\`, \`bottom\`, or \`left\`, "relative to its original position".
+   - Useful for minor shifts without affecting other elements’ layout.
+
+3. "absolute":
+   - Removed from normal flow — it doesn't take up space.
+   - Positioned "relative to the nearest ancestor with a position other than static" (relative, absolute, or fixed).
+   - If no such ancestor, it’s positioned relative to the \`<html>\` element.
+   - Commonly used in dropdowns, modals, tooltips, etc.
+
+4. "fixed":
+   - Similar to absolute but "always positioned relative to the viewport", not any ancestor.
+   - It stays fixed in place even when the page is scrolled.
+   - Good for headers, footers, or floating buttons.
+
+5. "sticky":
+   - A hybrid between relative and fixed.
+   - It behaves like relative until a scroll threshold is met, then it behaves like fixed.
+   - Useful for sticky headers or section titles that stick while scrolling that section.
+   - Requires a defined threshold (e.g., \`top: 0\`) and a scrollable ancestor.
+
+Understanding how each position affects layout and stacking (z-index) is crucial for responsive and layered designs.`,
+    example: `.container {
+  position: relative;
+}
+.box {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+/* This .box will be placed 10px from the top and 20px from the left of .container,
+   because .container is the nearest positioned ancestor */
+`,
   },
+
   {
     id: 15,
     question: `What is normalization in CSS? `,
@@ -169,10 +209,10 @@ export const cssData = [
 </html>`,
   },
   {
-  id: 22,
-  question: 'What is box-sizing: border-box in CSS?',
-  answer: `The CSS property 'box-sizing: border-box' tells the browser to include the element's padding and border within the specified width and height. This means the total size of the element won't increase when you add padding or borders — it stays constrained to the declared width/height.`,
-  example: `div {
+    id: 22,
+    question: "What is box-sizing: border-box in CSS?",
+    answer: `The CSS property 'box-sizing: border-box' tells the browser to include the element's padding and border within the specified width and height. This means the total size of the element won't increase when you add padding or borders — it stays constrained to the declared width/height.`,
+    example: `div {
   width: 200px;
   padding: 20px;
   border: 5px solid black;
@@ -181,8 +221,7 @@ export const cssData = [
 
 /* The total width of the element will still be 200px,
    not 200 + 20*2 + 5*2 = 250px */
-`
-},
-
+`,
+  },
 ];
 export default cssData;
