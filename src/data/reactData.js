@@ -123,12 +123,12 @@ function UncontrolledInput() {
     answer: `Hooks allow functional components to manage state, side effects, context, and more without using classes. They make logic reusable through custom hooks and promote a cleaner, more modular, and testable architecture.`,
     example: `useState, useEffect, useContext, useReducer, custom hooks`,
   },
-  {
-    id: 9,
-    question: `What is Server-Side Rendering (SSR)?`,
-    answer: `SSR means rendering the component on the server and sending pre-rendered HTML to the browser. This improves SEO and initial page load speed. After that, the React app "hydrates" and takes over interactivity.`,
-    example: `Next.js uses SSR: getServerSideProps()`,
-  },
+  // {
+  //   id: 9,
+  //   question: `What is Server-Side Rendering (SSR)?`,
+  //   answer: `SSR means rendering the component on the server and sending pre-rendered HTML to the browser. This improves SEO and initial page load speed. After that, the React app "hydrates" and takes over interactivity.`,
+  //   example: `Next.js uses SSR: getServerSideProps()`,
+  // },
   {
     id: 10,
     question: `React Render Process?`,
@@ -621,19 +621,52 @@ setState({ name: 'John' });
   {
     id: 36,
     question: `What is Server-Side Rendering (SSR) in React?`,
-    answer: `Server-side rendering (SSR) is the process of rendering React components on the server instead of in the browser. The server returns fully rendered HTML to the browser, which improves performance, especially for initial loads and SEO. After the HTML is loaded, React takes over and makes the page interactive (hydration). Next.js is a popular framework for SSR in React.`,
-    example: `// Next.js Page Example (SSR by default)
+    answer: `Server-Side Rendering (SSR) is the technique where React components are rendered to HTML on the server and sent to the client. This results in a faster initial page load and better SEO, as the content is available in the initial HTML. After loading, React hydrates the app—making it interactive by attaching event listeners.
+
+SSR is beneficial for:
+- Faster first paint and time-to-interactive
+- Better SEO (search engines can crawl HTML content)
+- Enhanced performance on slower networks or devices
+
+React alone doesn't support SSR directly, so frameworks like **Next.js** are commonly used. SSR is suitable for content-heavy or SEO-critical pages, while dynamic dashboards or user-specific data are often better with Client-Side Rendering (CSR).
+
+SSR Flow:
+1. User requests a page.
+2. The server fetches data and renders React to HTML.
+3. HTML is sent to the browser.
+4. React hydrates the page and takes over for interactivity.
+
+Hydration means making the static server-rendered HTML interactive by attaching React's functionality on top of it.
+
+Drawbacks:
+- Slower response time under load
+- More complex architecture
+- Higher server costs due to rendering on every request
+
+Frameworks for SSR:
+- Next.js (most popular)
+- Remix
+- Custom Node.js + ReactDOMServer setups (less common)
+
+SSR vs CSR:
+SSR renders HTML on the server, ideal for SEO and fast loads.
+CSR renders everything in the browser using JS, ideal for highly dynamic apps.`,
+
+    example: `// Example: SSR in Next.js (server renders before page is sent)
 export async function getServerSideProps() {
   const res = await fetch('https://api.example.com/data');
   const data = await res.json();
-  return { props: { data } };
+  return { props: { data } }; // Passed to page as props
 }
 
 function HomePage({ data }) {
   return <div>{data.message}</div>;
 }
-  `,
+
+export default HomePage;
+`,
   },
+
   {
     id: 37,
     question: `What is Strict Mode in React?`,
@@ -823,7 +856,7 @@ function Dashboard() {
 
 Use synthetic events inside JSX handlers, and native events for global listeners.
   `,
-  example: `// Synthetic Event
+    example: `// Synthetic Event
 <button onClick={(e) => console.log("Synthetic", e)}>Click</button>
 
 // Non-Synthetic Event

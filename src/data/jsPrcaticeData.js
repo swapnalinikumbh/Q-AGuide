@@ -739,6 +739,46 @@ sal
   .filter(person => person.sal > 10000)
   .forEach(person => console.log(person.name));
 // Output: John`,
+  },
+
+  {
+    id:74,
+    question:`provide me the city that he is currently in with the names of the people`,
+    answer:`This code extracts each person's current city from an array of people with multiple locations.
+reduce() loops through each person (curr) and accumulates results in acc (initially an empty array).
+Inside each iteration, it uses .find() to get the location object where isCurrent is true.
+If such a location exists, it pushes an object with the person's name and their currentCity to the result.`,
+    example:`const arr = [
+  {
+    name: 'swaransh',
+    location: [
+      { city: "pune", isCurrent: true },
+      { city: "Sambhajinagar", isCurrent: false }
+    ]
+  },
+  {
+    name: "varad",
+    location: [
+      { city: "pune", isCurrent: false },
+      { city: "sangli", isCurrent: true }
+    ]
+  }
+];
+
+const res = arr.reduce((acc, curr) => {
+  const current = curr.location.find(loc => loc.isCurrent);
+  if (current) {
+    acc.push({ name: curr.name, currentCity: current.city });
+  }
+  return acc;
+}, []);
+
+console.log(res);
+  // Output:  [
+  { name: 'swaransh', currentCity: 'pune' },
+  { name: 'varad', currentCity: 'sangli' }
+]
+`,
   }
 ];
 export default jsPracticeData;
