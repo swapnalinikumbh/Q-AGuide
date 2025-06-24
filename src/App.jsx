@@ -29,7 +29,7 @@ function App() {
           <Box sx={{ px: 2, py: 2, flex: 1 }}>
             <Routes>
               <Route path="/" element={<Navigate to="/javascript" />} />
-              <Route
+              {/* <Route
                 path="/javascript"
                 element={<PaginationList data={jsData} />}
               />
@@ -49,10 +49,32 @@ function App() {
               <Route
                 path="/jspractice"
                 element={<PaginationList data={jsPracticeData} />}
+              /> */}
+              <Route
+                path="/javascript"
+                element={<PaginationList module="javascript" />}
               />
+              <Route
+                path="/reactjs"
+                element={<PaginationList module="reactjs" />}
+              />
+              <Route
+                path="/redux"
+                element={<PaginationList module="redux" />}
+              />
+              <Route path="/html" element={<PaginationList module="html" />} />
+              <Route path="/css" element={<PaginationList module="css" />} />
+              <Route
+                path="/jspractice"
+                element={<PaginationList module="jspractice" />}
+              />
+              {/* <Route
+                path="/reactpractice"
+                element={<PaginationList module="reactpractice" />}
+              /> */}
             </Routes>
           </Box>
-          
+
           <Footer />
         </Box>
       </BrowserRouter>
