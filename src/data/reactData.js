@@ -27,7 +27,9 @@ Comparison Summary:
     id: 2,
     question: `Difference between State and Variables in React?`,
     answer:
-      "State is managed by React and is used to trigger re-renders when data changes. It is asynchronous, meaning you can't immediately access updated values after calling `setState`. Regular variables are standard JavaScript values that do not persist across renders and do not cause re-renders when changed. They’re good for temporary values that don’t affect UI.",
+      `State is managed by React and is used to trigger re-renders when data changes. It is asynchronous, meaning you can't immediately access updated values after calling \`setState\`. 
+      
+      Regular variables are standard JavaScript values that do not persist across renders and do not cause re-renders when changed. They’re good for temporary values that don’t affect UI.`,
     example: `let temp = 5; const [value, setValue] = useState(0);`,
   },
   {
@@ -56,8 +58,11 @@ useEffect(() => { return () => clearInterval(timer); }, [dependency]);`,
     id: 5,
     question: `Difference between Redux and Context API?`,
     answer: `Redux is a robust library for managing complex global state, using a central store, reducers, and middleware. It’s suited for large apps. 
+    
     Context API is a built-in way to share data without prop drilling—suitable for moderate state needs. 
+    
     Redux has dev tools and async support; 
+    
     Context has less boilerplate but limited scalability.`,
     example: `useContext(MyContext); vs useSelector(state => state.user)`,
   },
@@ -65,6 +70,7 @@ useEffect(() => { return () => clearInterval(timer); }, [dependency]);`,
     id: 6,
     question: `Virtual DOM vs Real DOM?`,
     answer: `The Real DOM is the actual rendered UI in the browser. 
+    
     The Virtual DOM is an in-memory representation of the UI. React updates the Virtual DOM first, then compares it (diffing) with the old one, and updates only changed parts in the Real DOM, improving performance.`,
     example: `React compares new VDOM with old VDOM, then updates real DOM minimally.`,
   },
@@ -123,12 +129,12 @@ function UncontrolledInput() {
     answer: `Hooks allow functional components to manage state, side effects, context, and more without using classes. They make logic reusable through custom hooks and promote a cleaner, more modular, and testable architecture.`,
     example: `useState, useEffect, useContext, useReducer, custom hooks`,
   },
-  // {
-  //   id: 9,
-  //   question: `What is Server-Side Rendering (SSR)?`,
-  //   answer: `SSR means rendering the component on the server and sending pre-rendered HTML to the browser. This improves SEO and initial page load speed. After that, the React app "hydrates" and takes over interactivity.`,
-  //   example: `Next.js uses SSR: getServerSideProps()`,
-  // },
+  {
+    id: 9,
+    question: `useReducer syntax?`,
+    answer: `useReducer is a React hook for managing complex state logic in functional components. It’s an alternative to useState, especially useful when state depends on previous values or involves multiple sub-values.`,
+    example: `const [state, dispatch] = useReducer(reducerFunction, initialState);`,
+  },
   {
     id: 10,
     question: `React Render Process?`,
@@ -1067,7 +1073,8 @@ useLayoutEffect(() => {
     id: 59,
     question: "Difference between useMemo and useCallback?",
     answer: `useMemo is used to memoize a computed value to avoid expensive recalculations.
-useCallback is used to memoize a function to prevent it from being re-created on every render.`,
+
+    useCallback is used to memoize a function to prevent it from being re-created on every render.`,
     example: `// useMemo
 const sortedList = useMemo(() => expensiveSort(list), [list]);
 
@@ -1110,7 +1117,8 @@ const element = React.createElement('h1', null, 'Hello, ', user.name);
     question:
       "What is the difference between class and functional components in React?",
     answer: `Class components are ES6 classes that extend React.Component and use lifecycle methods for managing state and side effects. 
-  Functional components are plain JavaScript functions introduced as stateless, but with the introduction of Hooks (e.g., useState, useEffect), they now support state and side-effects.
+  
+    Functional components are plain JavaScript functions introduced as stateless, but with the introduction of Hooks (e.g., useState, useEffect), they now support state and side-effects.
 
 Key differences:
 1. Syntax: Class vs function.

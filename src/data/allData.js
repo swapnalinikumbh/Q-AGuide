@@ -5,6 +5,7 @@ import reduxData from "./reduxData";
 import htmlData from "./htmlData";
 import cssData from "./cssData";
 import jsPracticeData from "./jsPrcaticeData";
+import reactpracticeData from "./reactPracticeData";
 
 const allData = [
   ...jsData,
@@ -13,6 +14,7 @@ const allData = [
   ...htmlData,
   ...cssData,
   ...jsPracticeData,
+  ...reactpracticeData,
 ];
 
 export default allData;

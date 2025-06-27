@@ -40,7 +40,8 @@ export const cssData = [
     id: 7,
     question: `What is the difference between pseudo-elements and pseudo-classes? `,
     answer: `Pseudo-elements (e.g., ::before, ::after, ::first-line, ::first-letter) style parts of elements, while 
-        Pseudo-classes (e.g., :hover, :focus, :active, :visited, :first-child, :last-child and :nth-child.) apply based on element states or conditions. `,
+        
+    Pseudo-classes (e.g., :hover, :focus, :active, :visited, :first-child, :last-child and :nth-child.) apply based on element states or conditions. `,
     example: `p::first-line { font-weight: bold; }\na:hover { text-decoration: underline; }`,
   },
   {
@@ -49,9 +50,13 @@ export const cssData = [
     answer: `The Box Model includes content, padding, border, and margin. These layers define the size and spacing of elements. The box-sizing property can be used to include or exclude padding/border from the total size. 
        
        Content: The actual content inside an HTML element, such as text, images, or other nested elements.
+       
        Padding: The space between the content and the border of the element. It pushes the border away from the content, increasing spacing inside the box.
+       
        Border:  A line or outline that wraps around the padding and content of the element. It visually separates the element from others.
+       
        Margin:  The outermost space around the element that separates it from other elements. It does not have background or color.
+       
        margin → border → padding → content`,
     example: `.box { width: 200px; padding: 20px; border: 5px solid black; margin: 10px; box-sizing: border-box; }`,
   },
@@ -142,14 +147,16 @@ Understanding how each position affects layout and stacking (z-index) is crucial
     id: 16,
     question: `Difference between Flexbox and Grid in CSS? `,
     answer: `Flexbox is a one-dimensional layout system for rows or columns, great for aligning items. 
-        Grid is two-dimensional, allowing for both rows and columns. Grid is better for full-page or complex layouts, while Flexbox is ideal for smaller UI components. `,
+        
+    Grid is two-dimensional, allowing for both rows and columns. Grid is better for full-page or complex layouts, while Flexbox is ideal for smaller UI components. `,
     example: `/* Flex */\n.container { display: flex; }\n/* Grid */\n.grid { display: grid; grid-template-columns: 1fr 1fr; }`,
   },
   {
     id: 17,
     question: `Difference between SVG and Canvas? `,
     answer: `SVG uses vector graphics, is resolution-independent, accessible, and part of the DOM.
-        Canvas uses raster graphics, requires JS for drawing, and is better for complex, high-performance animations or games. `,
+        
+    Canvas uses raster graphics, requires JS for drawing, and is better for complex, high-performance animations or games. `,
     example: `<svg><circle cx="50" cy="50" r="40" /></svg>\n<canvas id="canvas" width="200" height="100"></canvas>`,
   },
   {
@@ -168,7 +175,8 @@ Understanding how each position affects layout and stacking (z-index) is crucial
     id: 20,
     question: `Difference between display: none and visibility: hidden? `,
     answer: `\`display: none\` hides the element and removes it from the layout flow.
-        \`visibility: hidden\` hides the element but keeps its space in layout. The former is not interactive or accessible, while the latter is still present in the DOM and can trigger events. `,
+       
+    \`visibility: hidden\` hides the element but keeps its space in layout. The former is not interactive or accessible, while the latter is still present in the DOM and can trigger events. `,
     example: `.hidden1 { display: none; }\n.hidden2 { visibility: hidden; }`,
   },
   {
@@ -223,5 +231,29 @@ Understanding how each position affects layout and stacking (z-index) is crucial
    not 200 + 20*2 + 5*2 = 250px */
 `,
   },
+  {
+    id: 23,
+    question: `What is the difference between block, inline, and inline-block elements in CSS?`,
+  answer: `In CSS, display types determine how elements behave in layout:
+- 'block': starts on a new line and takes full width.
+- 'inline': stays in the flow of text and takes only the space it needs.
+- 'inline-block': behaves like inline but allows width/height like a block.`,
+  example: `
+<!-- Block Example -->
+<div style="display: block; width: 200px; height: 50px; background: lightblue;">
+  Block Element
+</div>
+
+<!-- Inline Example -->
+<span style="display: inline; background: pink;">
+  Inline Element
+</span>
+
+<!-- Inline-block Example -->
+<span style="display: inline-block; width: 100px; height: 50px; background: lightgreen;">
+  Inline-block Element
+</span>
+  `,
+  }
 ];
 export default cssData;

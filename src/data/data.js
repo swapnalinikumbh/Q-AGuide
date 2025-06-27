@@ -29,6 +29,7 @@ user = { name: "Virat" }; // ❌ Error – reassignment not allowed`,
     id: 4,
     question: `Data types in JS?`,
     answer: `Primitive: string, number, boolean, null, undefined, symbol. 
+    
     Non-primitive: object, array, function.`,
     example: `let str = 'hello'; 
 let obj = { a: 1 };`,
@@ -114,6 +115,7 @@ console.log(rest);  // [20, 30]
     id: 8,
     question: `Difference between null and undefined?`,
     answer: `null: empty by intent. 
+    
     undefined: declared but not assigned.`,
     example: `let a;
 console.log(a); // undefined → declared but not assigned
@@ -868,6 +870,58 @@ function outer() {
 outer();
 `,
   },
+  {
+    id: 66,
+    question: `What is a Prototype Chain?`,
+    answer: `The prototype chain is a mechanism in JavaScript that allows objects to inherit properties and methods from other objects. Every object in JavaScript has an internal property called [[Prototype]], which points to another object (its prototype). When you try to access a property or method on an object, JavaScript first checks if that property exists on the object itself. If it doesn't, it looks up the prototype chain until it finds the property or reaches the end of the chain (null). This allows for inheritance and code reuse.`,
+    example: `const animal = {
+  eats: true
+};
+
+const rabbit = {
+  jumps: true
+};
+
+// Set animal as the prototype of rabbit
+Object.setPrototypeOf(rabbit, animal);
+
+console.log(rabbit.jumps); // true (own property)
+console.log(rabbit.eats);  // true (inherited from animal)
+// console.log(Object.getPrototypeOf(rabbit) === animal); // true
+// console.log(rabbit.__proto__ === animal); // true
+// console.log(rabbit.hasOwnProperty('eats')); // false (not an own property)
+// console.log(rabbit.hasOwnProperty('jumps')); // true (own property)
+// console.log(Object.getPrototypeOf(rabbit).hasOwnProperty('eats')); // false
+// console.log(Object.getPrototypeOf(rabbit).hasOwnProperty('jumps')); // false
+// console.log(Object.getPrototypeOf(rabbit).eats); // true (inherited property)`,
+  },
+  {
+  id: 67,
+  question: `What is the difference between arrow functions and normal functions in JavaScript?`,
+  answer: `Arrow functions are a shorter syntax for writing functions, but they differ from normal functions in several ways:
+- 'this' keyword: Arrow functions do not have their own 'this'; they inherit it from the surrounding context. Normal functions have their own 'this'.
+- Syntax: Arrow functions are more concise.
+- Cannot be used as constructors: Arrow functions cannot be used with 'new'.
+- No 'arguments' object: Arrow functions do not have an 'arguments' object, while normal functions do.`,
+  example: `// Arrow Function
+const add = (a, b) => a + b;
+
+// Normal Function
+function addNormal(a, b) {
+  return a + b;
+}
+
+// 'this' difference:
+const obj = {
+  name: "Swaransh",
+  arrowFunc: () => console.log(this.name),      // undefined
+  normalFunc: function() { console.log(this.name); } // "Swaransh"
+};
+
+obj.arrowFunc();   // undefined
+obj.normalFunc();  // "Swaransh"
+`
+},
 ];
 
 export default jsdata;

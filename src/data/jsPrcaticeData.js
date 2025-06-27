@@ -779,6 +779,38 @@ console.log(res);
   { name: 'varad', currentCity: 'sangli' }
 ]
 `,
+  }, {
+    id: 75,
+    question: `output of the following code`,
+    answer: ` The code merges two objects using the spread operator.
+If a property exists in both objects, the one from the second object overwrites the first.
+This is useful for combining data from different sources or updating properties without modifying the original objects.`,
+    example: `const user = {
+  name: 'Alex',
+  address: '15th Park Avenue',
+  age: 43
+};
+
+const department = {
+  name: 'userName',
+  id: '001',
+  Shift: 'Morning'
+};
+
+const merged = {
+  ...user,
+  ...department
+};
+
+console.log(merged);
+// Output: {
+//   name: 'userName',  // 'userName' overwrites 'Alex' 
+// address: '15th Park Avenue',
+//   // age: 43, // 'age' is not overwritten
+//   // id: '001', // 'id' is added from department
+//   Shift: 'Morning'
+// }
+// Note: If 'name' in department was not 'userName', it would have been `
   }
 ];
 export default jsPracticeData;
