@@ -804,11 +804,11 @@ const merged = {
 
 console.log(merged);
 // Output: {
-//   name: 'userName',  // 'userName' overwrites 'Alex' 
+// name: 'userName',  // 'userName' overwrites 'Alex' 
 // address: '15th Park Avenue',
-//   // age: 43, // 'age' is not overwritten
-//   // id: '001', // 'id' is added from department
-//   Shift: 'Morning'
+// age: 43, // 'age' is not overwritten
+// id: '001', // 'id' is added from department
+// Shift: 'Morning'
 // }
 // Note: If 'name' in department was not 'userName', it would have been `
   }

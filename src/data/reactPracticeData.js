@@ -146,8 +146,7 @@ export default Countdown;`,
     answer: `The number after "Seconds:" automatically increases every second.
 It starts from 0 and keeps counting up indefinitely.
 This continues until the component is unmounted (removed from the screen).`,
-    example: `
-    import React,{ useState, useEffect } from 'react';
+    example: `import React,{ useState, useEffect } from 'react';
 
 function App() {
   const [time, setTime] = useState(0);
@@ -175,21 +174,113 @@ Seconds: 4
   },
   {
     id: 6,
-    question: ``,
-    answer: ``,
-    example: ``,
+    question: `how to pass data from a child component to a parent component in React functional components? Provide an example.`,
+    answer: `You can pass data from a child to a parent component using callback functions.
+The parent defines a function to handle the data.
+The child calls this function with the data when needed.
+This allows the parent to receive and use the data sent from the child.`,
+    example: `import React, { useState } from 'react';
+
+const Parent = () => {
+  const [data, setData] = useState('');
+
+  return (
+    <div>
+      <h1>Parent: {data}</h1>
+      <Child onSend={(value) => setData(value)} />
+    </div>
+  );
+};
+
+const Child = ({ onSend }) => {
+  const [input, setInput] = useState('');
+
+  return (
+    <div>
+      <input value={input} onChange={(e) => setInput(e.target.value)} />
+      <button onClick={() => onSend(input)}>Send to Parent</button>
+    </div>
+  );
+};
+
+export default Parent;
+// output: The Parent component displays the data sent from the Child component.
+// When the button in Child is clicked, it sends the input value to Parent, updating its state and displaying it.
+// Initially, Parent shows "Parent: " until the Child sends data.`,
   },
   {
     id: 7,
-    question: ``,
-    answer: ``,
-    example: ``,
+    question: `how to pass data from a parent component to a child component in React functional components? Provide an example.`,
+    answer: `You can pass data from a parent to a child component using props.
+The parent component defines the data.
+The child component receives this data as props.
+This allows the child to access and display or use the data provided by the parent.`,
+    example: `import React from 'react';
+
+// Child Component
+const Child = ({ message, number }) => {
+  return (
+    <div>
+      <h2>Child Component</h2>
+      <p>Message from Parent: {message}</p>
+      <p>Number from Parent: {number}</p>
+    </div>
+  );
+};
+
+// Parent Component
+const Parent = () => {
+  const message = "Hello from Parent!";
+  const number = 42;
+
+  return (
+    <div>
+      <h1>Parent Component</h1>
+      {/* Pass data to the Child component via props */}
+      <Child message={message} number={number} />
+    </div>
+  );
+};
+
+// Export the Parent component (default export)
+export default Parent;
+//output: The Parent component passes a message and a number to the Child component.
+// The Child component receives these props and displays them.
+// Initially, it shows "Message from Parent: Hello from Parent!" and "Number from Parent: 42".`,
   },
   {
     id: 8,
-    question: ` `,
-    answer: ``,
-    example: ``,
+    question: `create a simple counter application using React functional components and hooks. The counter should start at 0 and have buttons to increment and decrement the count.`,
+    answer: `This code creates a simple counter app.
+It uses useState to manage the count state.
+It has two buttons: one to increment and one to decrement the count.
+The count starts at 0 and updates when buttons are clicked.`,
+    example: `import React, { useState } from 'react';
+
+const Counter = () => {
+  // Initialize state for the counter
+  const [count, setCount] = useState(0);
+
+  // Function to increment the counter
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  // Function to decrement the counter
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <h1>Counter: {count}</h1>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+    </div>
+  );
+};
+
+export default Counter;`,
   },
   {
     id: 9,

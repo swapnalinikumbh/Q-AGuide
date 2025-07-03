@@ -48,9 +48,32 @@ export default function PaginationList({ module }) {
   const ITEMS_PER_PAGE = 10;
   const location = useLocation();
   useEffect(() => {
-    setSearch("");
+    const savedSearch = sessionStorage.getItem("lastSearch") || "";
+    setSearch(savedSearch);
+
+    const handleVisibilityChange = () => {
+      if (!document.hidden) {
+        const restored = sessionStorage.getItem("lastSearch") || "";
+        setSearch(restored);
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+  useEffect(() => {
+    setSearch(""); // Clear search when module changes
     setPage(1);
-  }, [location.pathname]);
+    sessionStorage.removeItem("lastSearch"); // Optional: remove stored search
+  }, [module]);
+
+  // useEffect(() => {
+  //   setSearch("");
+  //   setPage(1);
+  // }, [location.pathname]);
 
   const moduleData = datasetMap[module] || [];
 
@@ -93,8 +116,12 @@ export default function PaginationList({ module }) {
           placeholder="Search by question..."
           value={search}
           onChange={(e) => {
-            setSearch(e.target.value);
-            setPage(1); // Reset to page 1 on search
+            // setSearch(e.target.value);
+            // setPage(1); // Reset to page 1 on search
+            const value = e.target.value;
+            setSearch(value);
+            sessionStorage.setItem("lastSearch", value); // Save it so screen unlock restores it
+            setPage(1);
           }}
           inputProps={{ "aria-label": "search questions" }}
         />
