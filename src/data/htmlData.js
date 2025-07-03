@@ -32,7 +32,7 @@ const htmlData = [
   },
   {
     id: 6,
-    question:`can div behave like a span using display: inline? `,
+    question: `can div behave like a span using display: inline? `,
     answer: `Yes, by setting \`display: inline\` in CSS, a <div> can behave like a <span>, allowing it to flow inline with text and not start on a new line. `,
     example: `div.inline-style {\n  display: inline;\n}`,
   },
@@ -48,6 +48,83 @@ const htmlData = [
     question: `What are required attributes in the <img> tag? `,
     answer: `While not technically required, \`src\` is essential to load the image, and \`alt\` is recommended for accessibility. Other optional attributes include: width, height, title, loading, decoding, sizes, and srcset. `,
     example: `<img src="photo.jpg" alt="Profile photo" width="200" height="200" loading="lazy">`,
+  },
+  {
+    id: 9,
+    question: `What are inline and block tags in HTML?`,
+    answer: `In HTML, elements are classified as either block-level or inline-level based on how they are rendered:
+
+- Block-level elements take up the full width available and always start on a new line. They can contain other block or inline elements.
+- Inline elements do not start on a new line and only take up as much width as needed. They cannot contain block elements.
+
+This classification affects layout and structure of HTML pages.`,
+    example: `<!-- Block-level elements -->
+<div>This is a block element</div>
+<p>This is another block element</p>
+
+<!-- Inline elements -->
+<span>This is an inline element</span>
+<a href="#">This is also inline</a>
+<strong>Bold inline text</strong>
+  `,
+  },
+  {
+    id: 10,
+    question: `What are common block-level tags in HTML?`,
+    answer: `Block-level elements start on a new line and occupy the full width of their container. They are used to structure the layout of the document.`,
+    example: `<address>     <!-- Contact information -->
+<article>     <!-- Independent, self-contained content -->
+<aside>       <!-- Sidebar or content indirectly related -->
+<blockquote>  <!-- Quoted block of text -->
+<div>         <!-- Generic container -->
+<dl>          <!-- Description list -->
+<fieldset>    <!-- Group related form elements -->
+<footer>      <!-- Footer section -->
+<form>        <!-- HTML form -->
+<h1> to <h6>  <!-- Headings -->
+<header>      <!-- Header section -->
+<hr>          <!-- Horizontal rule -->
+<li>          <!-- List item -->
+<main>        <!-- Main content -->
+<nav>         <!-- Navigation links -->
+<ol>          <!-- Ordered list -->
+<p>           <!-- Paragraph -->
+<pre>         <!-- Preformatted text -->
+<section>     <!-- Section of document -->
+<table>       <!-- Table -->
+<ul>          <!-- Unordered list -->
+<video>       <!-- Video player -->
+  `,
+  },
+  {
+    id: 11,
+    question: `What are common inline-level tags in HTML?`,
+    answer: `Inline elements do not start on a new line and take up only as much width as necessary. They are typically used inside block elements to style or format small parts of text or content.`,
+    example: `<a>           <!-- Hyperlink -->
+<abbr>        <!-- Abbreviation -->
+<b>           <!-- Bold text -->
+<br>          <!-- Line break -->
+<button>      <!-- Clickable button -->
+<cite>        <!-- Citation -->
+<code>        <!-- Inline code -->
+<em>          <!-- Emphasized text -->
+<i>           <!-- Italic text -->
+<img>         <!-- Image -->
+<input>       <!-- Form input -->
+<label>       <!-- Label for input -->
+<mark>        <!-- Highlighted text -->
+<q>           <!-- Inline quotation -->
+<s>           <!-- Strikethrough -->
+<select>      <!-- Dropdown menu -->
+<small>       <!-- Smaller text -->
+<span>        <!-- Generic inline container -->
+<strong>      <!-- Important text -->
+<sub>         <!-- Subscript -->
+<sup>         <!-- Superscript -->
+<textarea>    <!-- Multi-line input -->
+<time>        <!-- Time/date -->
+<u>           <!-- Underlined text -->
+  `,
   },
 ];
 export default htmlData;
