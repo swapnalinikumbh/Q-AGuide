@@ -725,11 +725,11 @@ for(const value of arr){
 // Output: 1, 3, 5`,
   },
   {
-    id:73,
-    question:`Print names of people with salary > 10000`,
-    answer:`filter(person => person.sal > 10000) → filters only those with salary > 10000
+    id: 73,
+    question: `Print names of people with salary > 10000`,
+    answer: `filter(person => person.sal > 10000) → filters only those with salary > 10000
 forEach(person => console.log(person.name)) → prints their names`,
-    example:`const sal = [
+    example: `const sal = [
   { name: 'Leo', sal: 9000 },
   { name: 'John', sal: 12000 },
   { name: 'Ava', sal: 8000 }
@@ -742,13 +742,13 @@ sal
   },
 
   {
-    id:74,
-    question:`provide me the city that he is currently in with the names of the people`,
-    answer:`This code extracts each person's current city from an array of people with multiple locations.
+    id: 74,
+    question: `provide me the city that he is currently in with the names of the people`,
+    answer: `This code extracts each person's current city from an array of people with multiple locations.
 reduce() loops through each person (curr) and accumulates results in acc (initially an empty array).
 Inside each iteration, it uses .find() to get the location object where isCurrent is true.
 If such a location exists, it pushes an object with the person's name and their currentCity to the result.`,
-    example:`const arr = [
+    example: `const arr = [
   {
     name: 'swaransh',
     location: [
@@ -779,7 +779,8 @@ console.log(res);
   { name: 'varad', currentCity: 'sangli' }
 ]
 `,
-  }, {
+  },
+  {
     id: 75,
     question: `output of the following code`,
     answer: ` The code merges two objects using the spread operator.
@@ -810,7 +811,79 @@ console.log(merged);
 // id: '001', // 'id' is added from department
 // Shift: 'Morning'
 // }
-// Note: If 'name' in department was not 'userName', it would have been `
-  }
+// Note: If 'name' in department was not 'userName', it would have been `,
+  },
+  {
+    id: 76,
+    question: `What is the output of console.log([] + []); and why?`,
+    answer:
+      `The output is: "" (an empty string)
+    
+    The ` +
+      ` operator in JavaScript performs concatenation if any operand is a string.
+
+\`[]\` is an empty array. When used in a string context (like with ` +
+      `), it's converted to an empty string via \`[].toString()\`.
+
+So:
+\`\`\`js
+[] + []
+=> "" + ""
+=> ""
+\`\`\`
+
+It's not addition; it's string concatenation of two empty strings.`,
+    example:
+      `console.log([] + []); // Output: ""
+    // Explanation:
+// [] is an empty array, which converts to an empty string when used in a string context
+// So [] + [] becomes "" + "", resulting in an empty string ""  
+// The ` +
+      ` operator here is not performing addition, but string concatenation.
+// If you had numbers, like console.log([1] + [2]), it would output "12" because it concatenates the string representations of the arrays.
+// If you want to see the difference, try console.log([1] + [2]); // Output: "12"`,
+  },
+  {
+    id: 77,
+    question: `What is the output of console.log([1, 2, 3] + [3, 4, 5]); and why?`,
+    answer: `You’re using the + operator between two arrays.
+
+JavaScript doesn’t add arrays like in math. It converts them to strings using .toString().`,
+    example: `console.log([1, 2, 3] + [3, 4, 5]); // Output: "1,2,33,4,5"
+// Explanation:
+// [1, 2, 3] becomes "1,2,3"
+// [3, 4, 5] becomes "3,4,5"
+// So [1, 2, 3] + [3, 4, 5] is "1,2,3" + "3,4,5"
+// which results in "1,2,33,4,5" because it concatenates the two strings together.
+// If you want to see the individual arrays, you can use console.log([1, 2, 3], [3, 4, 5]); // Output: [1, 2, 3] [3, 4, 5]
+// This will print them as separate arrays instead of concatenating them.`,
+  },
+  {
+    id: 78,
+    question: `solve this [1,3,6,2,3,1] o/p : [3,1] or [1,3] `,
+    answer: `arr.indexOf(item) !== index: checks if it's a duplicate (not first occurrence).
+
+arr.lastIndexOf(item) === index: ensures we only include it once (on last appearance).
+
+So duplicates are picked only once, at their last position.`,
+    example: `const input = [1, 3, 6, 2, 3, 1];
+
+const result = input.filter((item, index, arr) =>
+  arr.indexOf(item) !== index && arr.lastIndexOf(item) === index
+);
+
+console.log(result); // [3, 1]
+// Explanation:
+// The filter method checks each item in the array.
+// indexOf(item) finds the first occurrence of the item.
+// lastIndexOf(item) finds the last occurrence of the item.
+// If the first occurrence is not the same as the last occurrence, it means the item is repeated.
+// The filter returns only those items that are repeated, resulting in [3, 1]
+// If you want to see the output in a different order, you can sort it or manipulate
+// the result array further. For example, you can sort it like this:
+result.sort((a, b) => a - b);
+console.log(result); // [1, 3]
+// This will give you the output in ascending order.`,
+  },
 ];
 export default jsPracticeData;

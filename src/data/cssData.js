@@ -176,7 +176,26 @@ Understanding how each position affects layout and stacking (z-index) is crucial
     question: `Difference between display: none and visibility: hidden? `,
     answer: `\`display: none\` hides the element and removes it from the layout flow.
        
-    \`visibility: hidden\` hides the element but keeps its space in layout. The former is not interactive or accessible, while the latter is still present in the DOM and can trigger events. `,
+    \`visibility: hidden\` hides the element but keeps its space in layout. The former is not interactive or accessible, while the latter is still present in the DOM and can trigger events. 
+    
+    🔹 display: none (CSS)
+Completely removes the element from the page layout.
+
+The element takes up no space.
+
+Can be toggled using JavaScript or CSS.
+
+🔹 hidden attribute (HTML)
+A boolean HTML attribute that hides the element.
+
+Equivalent to applying \`display: none;\` via CSS.
+
+Can be used directly in HTML like \`<div hidden>\`.
+
+Main Difference:
+\`hidden\` is semantic HTML (declarative).
+
+\`display: none\` is styling CSS (imperative).`,
     example: `.hidden1 { display: none; }\n.hidden2 { visibility: hidden; }`,
   },
   {
@@ -234,11 +253,11 @@ Understanding how each position affects layout and stacking (z-index) is crucial
   {
     id: 23,
     question: `What is the difference between block, inline, and inline-block elements in CSS?`,
-  answer: `In CSS, display types determine how elements behave in layout:
+    answer: `In CSS, display types determine how elements behave in layout:
 - 'block': starts on a new line and takes full width.
 - 'inline': stays in the flow of text and takes only the space it needs.
 - 'inline-block': behaves like inline but allows width/height like a block.`,
-  example: `
+    example: `
 <!-- Block Example -->
 <div style="display: block; width: 200px; height: 50px; background: lightblue;">
   Block Element
@@ -254,6 +273,6 @@ Understanding how each position affects layout and stacking (z-index) is crucial
   Inline-block Element
 </span>
   `,
-  }
+  },
 ];
 export default cssData;

@@ -18,7 +18,20 @@ const reduxData =[
     id: 2,
     question:  `What is Redux Toolkit? `,
     answer:
-       `Redux Toolkit simplifies Redux development by reducing boilerplate. It provides methods like createSlice, configureStore, and uses Immer for immutable updates. `,
+       `Redux Toolkit simplifies Redux development by reducing boilerplate. It provides methods like createSlice, configureStore, and uses Immer for immutable updates. 
+       
+       🔑 Key Features:
+\`configureStore()\` – Sets up the Redux store with good defaults (DevTools, thunk middleware).
+
+\`createSlice()\` – Generates actions + reducers in one step.
+
+\`createAsyncThunk()\` – Handles async logic like API calls.
+
+Less boilerplate – No need to write action types manually.
+
+Immutability built-in – Uses Immer.js under the hood.
+
+`,
     example:
        `const slice = createSlice({ name: 'counter', initialState: 0, reducers: { increment: (state) => state + 1 } }) `
   },

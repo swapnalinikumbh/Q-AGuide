@@ -126,5 +126,64 @@ This classification affects layout and structure of HTML pages.`,
 <u>           <!-- Underlined text -->
   `,
   },
+  {
+    id: 13,
+    question: `What is the difference between <img> and <figure> tags in HTML?`,
+    answer: `<img> is used to embed an image in an HTML document.
+
+<figure> is a semantic container used to group media (like an image or chart) along with its <figcaption> (caption/description).
+
+<figure> improves **semantic meaning** and is useful for accessibility and SEO.
+<img> is not semantic—it only embeds the image.
+
+👉 Use <figure> when you want to include a caption or describe the image in context.
+
+`,
+    example: `<!-- Just an image --> <img src="dog.jpg" alt="A cute dog"> <!-- Semantic grouping with caption --> <figure> <img src="dog.jpg" alt="A cute dog"> <figcaption>A happy Labrador playing in the park.</figcaption> </figure> `,
+  },
+  {
+    id: 14,
+    question: `create 5 row and 5 column table in HTML?`,
+    answer: ` To create a 5x5 table in HTML, you can use the <table>, <tr>, and <td> tags. Each <tr> represents a row, and each <td> represents a cell within that row. Here's an example of a simple 5x5 table:`,
+    example: `<!DOCTYPE html>
+<html>
+<head>
+  <title>5x5 HTML Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<h3>5x5 Table</h3>
+<table>
+  <tr>
+    <td>1,1</td><td>1,2</td><td>1,3</td><td>1,4</td><td>1,5</td>
+  </tr>
+  <tr>
+    <td>2,1</td><td>2,2</td><td>2,3</td><td>2,4</td><td>2,5</td>
+  </tr>
+  <tr>
+    <td>3,1</td><td>3,2</td><td>3,3</td><td>3,4</td><td>3,5</td>
+  </tr>
+  <tr>
+    <td>4,1</td><td>4,2</td><td>4,3</td><td>4,4</td><td>4,5</td>
+  </tr>
+  <tr>
+    <td>5,1</td><td>5,2</td><td>5,3</td><td>5,4</td><td>5,5</td>
+  </tr>
+</table>
+
+</body>
+</html>
+`,
+  },
 ];
 export default htmlData;
