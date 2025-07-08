@@ -1099,5 +1099,166 @@ console.log(delete obj);  // ❌ false`,
     example: `function test(a, b, c = 10) {}
 console.log(test.length); // 👉 2`,
   },
+  {
+    id:89,
+    question:`output of following`,
+    answer:`1.console.log('start')
+→ Synchronous → runs immediately
+✅ Output: start
+
+2.setTimeout(..., 0)
+→ Added to macrotask queue
+❌ Not executed immediately
+
+3.Promise.resolve().then(...)
+→ Added to microtask queue
+
+4.console.log('end')
+→ Synchronous → runs immediately
+✅ Output: end
+
+5.Microtasks (Promises) are processed after synchronous code but before setTimeout
+✅ Output: promise
+
+6.Macrotasks (setTimeout) are processed afterward
+✅ Output: timeout`,
+    example:`console.log('start');
+
+setTimeout(() => console.log('timeout'), 0);
+
+Promise.resolve().then(() => console.log('promise'));
+
+console.log('end');
+//output:
+// start  
+end  
+promise  
+timeout
+
+Why does setTimeout() go to the Macrotask queue?
+🔹 Because JavaScript uses the Event Loop, which manages two main task queues:
+Macrotask Queue
+Microtask Queue`,
+  },
+  {
+    id:90,
+    question:`Flatten a deeply nested array `,
+    answer:`If arr[i] is a number → push to result
+If it's an array → recursively flatten it
+In the end, we return res`,
+    example:`let arr = [3, 2, [4, 5, [6, 8]], 8, 0];
+
+function flattenarr(arr) {
+  let res = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') {
+      res.push(arr[i]);
+    } else if (Array.isArray(arr[i])) {
+      res = res.concat(flattenarr(arr[i])); // recursively flatten
+    }
+  }
+
+  return res
+}
+
+console.log(flattenarr(arr)); // Output: 
+[
+  3, 2, 4, 5,
+  6, 8, 8, 0
+]`,
+  },
+  {
+    id: 91,
+    question: `Flatten a deeply nested array (manually)
+Count the total number of elements`,
+    answer: `If arr[i] is a number → push to result
+If it's an array → recursively flatten it
+In the end, we return res.length (i.e., total flat element count)`,
+    example: `let arr = [3, 2, [4, 5, [6, 8]], 8, 0];
+
+function flattenarr(arr) {
+  let res = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') {
+      res.push(arr[i]);
+    } else if (Array.isArray(arr[i])) {
+      res = res.concat(flattenarr(arr[i])); // recursively flatten
+    }
+  }
+
+  return res.length;
+}
+
+console.log(flattenarr(arr)); // Output: 5
+`,
+  },
+  {
+    id: 92,
+    question: `Flatten a deeply nested array, Add null and undefined in arr then what will happen `,
+    answer: `typeof null is 'object'
+typeof undefined is 'undefined'
+This function ignores both since it's only pushing values where typeof === 'number'
+So result: [3, 2, 4, 5, 6, 8, 8, 0] → length = 5`,
+    example: `
+    
+let arr = [3, 2, [4, null, 5, [6, undefined, 8]], 8, 0];
+function flattenarr(arr) {
+  let res = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const item = arr[i];
+
+    if (typeof item === 'number') {
+      res.push(item);
+    } else if (Array.isArray(item)) {
+      res = res.concat(flattenarr(item));
+    }
+    // Ignore null and undefined
+  }
+
+  return res.length;
+}
+
+console.log(flattenarr(arr)); // Output: 5`,
+  },
+  {
+    id: 93,
+    question: `polyfill for filter using prototype `,
+    answer: `this is the array the method is called on
+callback(this[i], i, this) simulates native .filter() behavior
+hasOwnProperty(i) avoids inherited or empty index issues
+
+🔸 Notes:
+This works just like Array.prototype.filter
+It's a polyfill, meaning you’re defining it only if it's not already available in older environments`,
+    example: `
+    Array.prototype.myFilter = function (callback) {
+  const result = [];
+
+  // \`this\` refers to the array
+  for (let i = 0; i < this.length; i++) {
+    if (this.hasOwnProperty(i)) {
+      if (callback(this[i], i, this)) {
+        result.push(this[i]);
+      }
+    }
+  }
+
+  return result;
+};
+
+const arr = [1, 2, 3, 4, 5];
+const even = arr.myFilter((num) => num % 2 === 0);
+console.log(even); // [2, 4]
+`,
+  },
+  // {
+  //   id: 94,
+  //   question: ``,
+  //   answer: ``,
+  //   example: ``,
+  // },
 ];
 export default jsPracticeData;

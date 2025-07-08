@@ -1473,6 +1473,68 @@ if (process.env.NODE_ENV === 'development') {
 }
   `,
   },
+  {
+    id:75,
+    question:`React 19 features `,
+    answer:`🧱 1. Server Components & Server Actions
+Server Components are now stable, allowing rendering on the server to reduce client bundle sizes 
+Server Actions (via "use server") let you define async server-side functions that client code can call directly 
+
+🔄 2. Form & Action APIs
+You can now pass functions directly to <form action={…}> (or <button formAction={…}>) to handle submissions without explicit event handlers .
+New hook: useFormStatus() provides state (pending, etc.) of the surrounding form to child components 
+
+🚀 3. Optimistic UI with useOptimistic()
+A built-in hook for managing optimistic updates during async operations, auto-reverting or applying once complete
+
+⚙️ 4. Automatic Compiler Optimizations
+React 19’s compiler handles optimizations (memoization, callback stability) automatically, reducing the need for manual useMemo, useCallback, and memo()
+
+🔧 5. Simplified Refs & Context
+Refs can now be passed as ordinary props:
+No more forwardRef in most cases 
+You can now write <Context value="..."> instead of <Context.Provider> 
+
+🧹 6. Ref Callback Cleanup
+ref callback functions now accept returnable cleanup logic, akin to useEffect cleanups
+
+🪶 7. Metadata & Assets Support
+You can embed <title>, <meta>, <link> inside components, and React will hoist them to <head> for SEO 
+Built-in support for <link rel="stylesheet">, async scripts, and resource preloading
+
+🌐 8. Custom Elements & Hydration Improvements
+Full support for Web Components (custom elements) 
+Hydration errors now include diffs for easier debugging 
+
+🛠️ 9. Dev Tools & Performance
+Enhanced React DevTools with improved performance profiling and render metrics 
+Automatic batching of state updates continues and improves performance under frequent updates `,
+    example:`function MyInput({ ref }) { return <input ref={ref} /> }
+
+    🎯 TL;DR – Why Upgrade?
+React 19 brings:
+Cleaner APIs for refs, forms, metadata, and server actions
+Performance boosts via compiler optimizations
+Better support for new web standards (RSC, Custom Elements, metadata)
+Developer-friendly features & tooling`,
+  },
+  {
+    id: 76,
+    question: `What Triggers a Re-render?`,
+    answer: `React re-renders a component when:
+1.State changes via useState
+2.Props change
+3.Context value changes
+4.Parent re-renders
+5.Force update`,
+    example: `| Hook          | Runs on initial render | Runs on re-render | Triggered by                |
+| ------------- | ---------------------- | ----------------- | --------------------------- |
+| \`useState\`    | ✅ Gets initial value   | ✅ Keeps state     | When \`setState()\` is called |
+| \`useEffect\`   | ✅ After first render   | ✅ If deps change  | Side effects (API, DOM)     |
+| \`useMemo\`     | ✅ Returns memoized val | ✅ If deps change  | Expensive calculations      |
+| \`useCallback\` | ✅ Returns memoized fn  | ✅ If deps change  | Prevent re-creation         |
+`,
+  },
 ];
 
 export default reactData;

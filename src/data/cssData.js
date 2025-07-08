@@ -274,5 +274,72 @@ Main Difference:
 </span>
   `,
   },
+  {
+    id:24,
+    question:`CSS Property`,
+    answer:`A CSS property is a style rule that controls how HTML elements are displayed. It defines a specific style behavior (like color, size, margin, etc.).`,
+    example:`| Property           | Description                         | Example                     |
+| ------------------ | ----------------------------------- | --------------------------- |
+| \`color\`            | Text color                          | \`color: red;\`               |
+| \`background-color\` | Element background color            | \`background-color: yellow;\` |
+| \`font-size\`        | Size of the text                    | \`font-size: 20px;\`          |
+| \`font-weight\`      | Thickness of text                   | \`font-weight: bold;\`        |
+| \`margin\`           | Space outside the element           | \`margin: 10px;\`             |
+| \`padding\`          | Space inside the element            | \`padding: 15px;\`            |
+| \`border\`           | Border around the element           | \`border: 1px solid black;\`  |
+| \`width\`            | Width of the element                | \`width: 100px;\`             |
+| \`height\`           | Height of the element               | \`height: 50px;\`             |
+| \`display\`          | Layout behavior (block, flex, etc.) | \`display: flex;\`            |
+| \`position\`         | Positioning strategy                | \`position: absolute;\`       |
+| \`top\`, \`left\`      | Positioning offsets                 | \`top: 10px; left: 20px;\`    |
+| \`text-align\`       | Horizontal alignment of text        | \`text-align: center;\`       |`,
+  },
+  {
+    id:25,
+    question:`display Property`,
+    answer:`The display property in CSS controls how an element is displayed in the layout — i.e., whether it behaves as a block, inline, flexbox, grid, etc.`,
+    example:`| Value          | Behavior                                                            |
+| -------------- | ------------------------------------------------------------------- |
+| \`block\`        | Starts on a new line, takes full width (e.g., \`<div>\`, \`<p>\`)       |
+| \`inline\`       | Stays in line with text, doesn't break line (e.g., \`<span>\`, \`<a>\`) |
+| \`inline-block\` | Like inline but can have width, height, margin, etc.                |
+| \`none\`         | Hides the element (it’s not rendered at all)                        |
+| \`flex\`         | Enables **Flexbox** layout on container                             |
+| \`grid\`         | Enables **Grid** layout on container                                |
+| \`inline-flex\`  | Same as \`flex\` but behaves like \`inline\` element                    |
+| \`inline-grid\`  | Same as \`grid\` but behaves like \`inline\` element                    |
+| \`contents\`     | Removes the element’s box but keeps its children visible            |
+| \`table\`        | Makes element behave like a \`<table>\`                               |`,
+  },
+  {
+    id:26,
+    question:``,
+    answer:``,
+    example:``,
+  },
+  {
+    id:27,
+    question:``,
+    answer:``,
+    example:``,
+  },
+  {
+    id:28,
+    question:``,
+    answer:``,
+    example:``,
+  },
+  {
+    id:29,
+    question:``,
+    answer:``,
+    example:``,
+  },
+  {
+    id:30,
+    question:``,
+    answer:``,
+    example:``,
+  },
 ];
 export default cssData;

@@ -284,45 +284,79 @@ export default Counter;`,
   },
   {
     id: 9,
-    question: ``,
-    answer: ``,
-    example: ``,
+    question: `carete custom hooks for change the color of text when hover `,
+    answer: `🧠 What This Does:
+useHoverColor tracks color in state
+Returns onMouseEnter, onMouseLeave, and inline style
+You spread it on any element to make it respond to hover
+
+🧪 Output:
+Default text color: blue
+On hover: changes to orange`,
+    example: `import React, { useState } from "react";
+
+// 🔹 Custom Hook: useHoverColor
+function useHoverColor(initialColor = "black", hoverColor = "red") {
+  const [color, setColor] = useState(initialColor);
+
+  const onMouseEnter = () => setColor(hoverColor);
+  const onMouseLeave = () => setColor(initialColor);
+
+  return {
+    style: { color },
+    onMouseEnter,
+    onMouseLeave,
+  };
+}
+
+// 🔹 App Component
+function App() {
+  const hoverProps = useHoverColor("blue", "green");
+
+  return (
+    <div style={{ padding: "40px" }}>
+      <h1 {...hoverProps}>Hover over this text</h1>
+    </div>
+  );
+}
+
+export default App;`,
   },
-  {
-    id: 10,
-    question: ``,
-    answer: ``,
-    example: ``,
-  },
-  {
-    id: 11,
-    question: ` `,
-    answer: ``,
-    example: ``,
-  },
-  {
-    id: 12,
-    question: ``,
-    answer: ``,
-    example: ``,
-  },
-  {
-    id: 13,
-    question: ``,
-    answer: ``,
-    example: ``,
-  },
-  {
-    id: 14,
-    question: ` `,
-    answer: ``,
-    example: ``,
-  },
-  {
-    id: 15,
-    question: ``,
-    answer: ``,
-    example: ``,
-  },
+  // {
+  //   id: 10,
+  //   question: ``,
+  //   answer: ``,
+  //   example: ``,
+  // },
+  // {
+  //   id: 11,
+  //   question: ` `,
+  //   answer: ``,
+  //   example: ``,
+  // },
+  // {
+  //   id: 12,
+  //   question: ``,
+  //   answer: ``,
+  //   example: ``,
+  // },
+  // {
+  //   id: 13,
+  //   question: ``,
+  //   answer: ``,
+  //   example: ``,
+  // },
+  // {
+  //   id: 14,
+  //   question: ` `,
+  //   answer: ``,
+  //   example: ``,
+  // },
+  // {
+  //   id: 15,
+  //   question: ``,
+  //   answer: ``,
+  //   example: ``,
+  // },
 ];
 export default reactpracticeData;

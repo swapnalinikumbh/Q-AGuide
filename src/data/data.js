@@ -774,9 +774,21 @@ let a = 5; // ReferenceError`,
   {
     id: 61,
     question: `What is a prototype?`,
-    answer: `An object that other objects inherit from.`,
-    example: `function A(){}; 
-A.prototype.sayHi = () => 'hi';`,
+    answer: `An object that other objects inherit from. 
+prototype is an object from which other objects inherit properties and methods.`,
+    example: `function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayHello = function () {
+  console.log("Hello, I'm " + this.name);
+};
+
+const p1 = new Person("Alice");
+const p2 = new Person("Bob");
+
+p1.sayHello(); // Hello, I'm Alice
+p2.sayHello(); // Hello, I'm Bob`,
   },
   {
     id: 62,
@@ -896,14 +908,14 @@ console.log(rabbit.eats);  // true (inherited from animal)
 // console.log(Object.getPrototypeOf(rabbit).eats); // true (inherited property)`,
   },
   {
-  id: 67,
-  question: `What is the difference between arrow functions and normal functions in JavaScript?`,
-  answer: `Arrow functions are a shorter syntax for writing functions, but they differ from normal functions in several ways:
+    id: 67,
+    question: `What is the difference between arrow functions and normal functions in JavaScript?`,
+    answer: `Arrow functions are a shorter syntax for writing functions, but they differ from normal functions in several ways:
 - 'this' keyword: Arrow functions do not have their own 'this'; they inherit it from the surrounding context. Normal functions have their own 'this'.
 - Syntax: Arrow functions are more concise.
 - Cannot be used as constructors: Arrow functions cannot be used with 'new'.
 - No 'arguments' object: Arrow functions do not have an 'arguments' object, while normal functions do.`,
-  example: `// Arrow Function
+    example: `// Arrow Function
 const add = (a, b) => a + b;
 
 // Normal Function
@@ -920,8 +932,78 @@ const obj = {
 
 obj.arrowFunc();   // undefined
 obj.normalFunc();  // "Swaransh"
-`
-},
+`,
+  },
+  {
+    id: 68,
+    question: `How many ways to Declare Functions in JavaScript`,
+    answer: `1. Function Declaration (Named Function) -->✅ Hoisted (can be used before it's declared)
+
+2. Function Expression (Anonymous or Named) -->❌ Not hoisted (cannot be used before the line where it's defined)
+
+3. Arrow Function (ES6) --> Short syntax
+❌ No own this, arguments, super, or new.target
+Great for callbacks and simple logic
+
+4. Immediately Invoked Function Expression (IIFE) -->Runs immediately after it's defined
+Used to create a private scope
+
+5. Function Constructor (Not Recommended) -->Avoid using this — slow and unsafe (like eval)
+
+6. Method inside Object (Object Method Syntax)
+
+7. Class Method
+
+| Type                 | Hoisted | Has \`this\` | Use Case                        |
+| -------------------- | ------- | ---------- | ------------------------------- |
+| Function Declaration | ✅ Yes   | ✅ Yes      | General use                     |
+| Function Expression  | ❌ No    | ✅ Yes      | When you want function as value |
+| Arrow Function       | ❌ No    | ❌ No       | Callbacks, small functions      |
+| IIFE                 | ❌ No    | ✅ Yes      | Run immediately, private scope  |
+| Function Constructor | ❌ No    | ✅ Yes      | Avoid (unsafe, like \`eval\`)     |
+| Object Method        | ❌ No    | ✅ Yes      | Methods in objects              |
+| Class Method         | ❌ No    | ✅ Yes      | OOP in JavaScript               |
+`,
+    example: `1.function add(a, b) {
+  return a + b;
+}
+
+2.const add = function (a, b) {
+  return a + b;
+};
+
+3.const add = (a, b) => a + b;
+
+4.(function () {
+  console.log("IIFE runs immediately");
+})();
+
+5.const add = new Function("a", "b", "return a + b");
+
+6.const obj = {
+  greet() {
+    console.log("Hello!");
+  },
+};
+
+7.class MyClass {
+  sayHello() {
+    console.log("Hello from class");
+  }
+}`,
+  },
+  // {
+  //   id: 69,
+  //   question: ``,
+  //   answer: ``,
+  //   example: ``,
+  // },
+  // {
+  //   id: 70,
+  //   question: ``,
+  //   answer: ``,
+  //   example: ``,
+  // },
 ];
 
 export default jsdata;

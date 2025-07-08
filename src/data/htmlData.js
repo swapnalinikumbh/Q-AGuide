@@ -185,5 +185,69 @@ This classification affects layout and structure of HTML pages.`,
 </html>
 `,
   },
+  {
+    id:15,
+    question:`<head> Tag `,
+    answer:`🔹 Definition: The <head> tag is an HTML element that contains metadata and links to external resources about the document. It is placed before the <body> tag in an HTML document.
+
+🔹 Purpose:
+The <head> tag doesn't display anything on the webpage itself. Instead, it provides essential information to the browser, search engines, and external services like social media platforms.
+
+🔹 Important Notes:
+The <head> is not visible in the browser's main content.
+It helps with SEO, accessibility, performance, and responsive design.
+Always include the <meta charset="UTF-8"> for proper character encoding.`,
+    example:`<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Awesome Page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A brief description of the page." />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+  </body>
+</html>`,
+  },
+  {
+    id:16,
+    question:`async vs defer in HTML <script> tag`,
+    answer:`These are boolean attributes used to control how and when an external JavaScript file is loaded and executed.
+    🔹 1. async
+Loads the script asynchronously.
+Script executes immediately after downloading — does NOT wait for HTML parsing to finish.
+Order is not guaranteed if multiple scripts are async.
+
+🔹 2. defer
+Loads the script in the background. 
+Waits until HTML parsing is done, then executes the script in order.
+Best for scripts that manipulate the DOM or depend on other scripts.
+
+✅ Best Practices:
+Use defer for scripts that depend on the DOM.
+Use async for independent scripts like analytics or ads.`,
+    example:`<script src="script1.js" async></script>
+<script src="script2.js" async></script>
+Execution may be: script2.js first, then script1.js, depending on download speed.
+
+<script src="script1.js" defer></script>
+<script src="script2.js" defer></script>
+Execution order is preserved: script1.js, then script2.js, after the full HTML is parsed.`,
+  },
+  // {
+  //   id:15,
+  //   question:``,
+  //   answer:``,
+  //   example:``,
+  // },
+  // {
+  //   id:15,
+  //   question:``,
+  //   answer:``,
+  //   example:``,
+  // },
 ];
 export default htmlData;
