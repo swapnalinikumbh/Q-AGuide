@@ -169,7 +169,7 @@ export default function Header() {
                   <Button
                     sx={{
                       color: "white",
-                      fontWeight: 500,
+                      // fontWeight: 500,
                       textTransform: "capitalize",
                       fontSize: "1rem",
                       borderBottom: item.children.some((child) =>

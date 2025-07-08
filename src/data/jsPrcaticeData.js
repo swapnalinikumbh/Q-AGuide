@@ -885,5 +885,219 @@ result.sort((a, b) => a - b);
 console.log(result); // [1, 3]
 // This will give you the output in ascending order.`,
   },
+  {
+    id: 79,
+    question: `What do you think the output of the following is?`,
+    answer: `console.log([] == []); // false
+Two empty arrays are different objects in memory.
+Objects (including arrays) are compared by reference, not by value.
+So: [] == [] → false
+
+console.log([] == ![]); // true
+Break it down:
+![] → false (because [] is truthy, so negation becomes false)
+So: [] == false
+Now, JS does type coercion:
+[] becomes '' (empty string)
+false becomes 0
+'' == false → '' == 0 → 0 == 0 → true
+✅ So: [] == ![] → true
+
+console.log('0' == false); // true
+Type coercion again:
+'0' becomes number 0
+false becomes 0
+0 == 0 → true
+✅ So: '0' == false → true
+
+console.log(false == 'false'); // false
+Here:
+false is a boolean
+'false' is a string
+When comparing a boolean and a string:
+Convert both to numbers
+false → 0
+'false' → NaN (not a number)
+So: 0 == NaN → false
+❌ So: false == 'false' → false`,
+    example: `console.log([] == []); //false
+console.log([] == ![]); // true
+console.log('0' == false); // true
+console.log(false == 'false); //false`,
+  },
+  {
+    id: 80,
+    question: `What happen when you define a function twice?`,
+    answer: `Function hoisting moves all function declarations to the top before any code runs.
+If multiple functions have the same name, the last one overwrites the previous ones.`,
+    example: `function foo(){
+  console.log("First");
+}
+foo();
+function foo(){
+  console.log("Second");
+}
+foo();
+//output
+// Second
+// Second`,
+  },
+  {
+    id: 81,
+    question: `Variable shadowing`,
+    answer: `This throws a ReferanceError. The let a = 20 declaration creates a new a within the function. The a is in the "temporal dead zone" (TDZ) until it is initialized, so accessing it before that throws an error.`,
+    example: `let a = 10;
+function test(){
+   console.log(a); // 🚫 ReferenceError
+   let a = 20;
+}
+test();
+//output 
+// ReferenceError: Cannot access 'a' before initialization`,
+  },
+  {
+    id: 82,
+    question: `with statement woes`,
+    answer: `The with statement extends the scope chain temporarily, allowing you to access object properties without repeatedly referencing the object.
+
+⚠️ with is considered bad practice and disallowed in strict mode ('use strict') because it creates unpredictable behavior.
+
+Step-by-Step Breakdown:
+const obj = { x: 10 };
+→ obj.x is initially 10.
+
+with (obj) { var x = 20; }
+
+This does not update obj.x.
+
+var x = 20; inside with creates/updates a global variable x, not obj.x.
+
+Why? Because var declarations do not respect the with scope for property assignment — they still go to the surrounding scope, here: global.
+
+console.log(obj.x);
+→ Still 10
+
+console.log(x);
+→ 20 (global variable)`,
+    example: `const obj = { x: 10 };
+with (obj) {
+   var x = 20;
+}
+console.log(obj.x);
+console.log(x);`,
+  },
+  {
+    id: 83,
+    question: `Mutation with const`,
+    answer: `✅ const allows changing object properties
+
+❌ const does not allow reassigning the object itself`,
+    example: `const obj = { a: 1 };
+obj.a = 2;
+console.log(obj.a); // ✅ 2
+obj = { b: 3 };`,  // ❌ TypeError
+  },
+  {
+    id: 84,
+    question: `NaN quirks`,
+    answer: `NaN === NaN → false
+In JavaScript, NaN is not equal to anything, even itself.
+
+Object.is(NaN, NaN) → true
+Object.is checks strict equality, but unlike ===, it correctly handles NaN and distinguishes -0 and +0.
+
+NaN + " is a number" → "NaN is a number"
+JavaScript does string concatenation: NaN becomes "NaN" + " is a number".
+`,
+    example: `console.log(NaN === NaN);            // ❌ false
+console.log(Object.is(NaN, NaN));    // ✅ true
+console.log(NaN + " is a number");   // ✅ "NaN is a number"`,  
+  },
+  {
+    id: 85,
+    question: `The mysterious arguments`,
+    answer: `arguments is an array-like object available inside non-arrow functions.
+
+It holds the actual arguments passed to the function.
+
+In non-strict mode, arguments[0] is linked to a, arguments[1] to b.
+
+So:
+
+Initially: a = 5, b = 6
+
+Then: arguments[0] = 10 changes both arguments[0] and a
+
+So console.log(a) prints: 10`,
+    example: `function test(a, b) {
+    arguments[0] =10;
+    console.log(a);
+}
+test(5, 6);
+//output: 10`,
+  },
+  {
+    id: 86,
+    question: `How do behave when you skip indices?`,
+    answer: `const arr = [1, 2, 3];
+
+Creates an array of length 3 → [1, 2, 3]
+
+arr[10] = 4;
+
+Sets the 11th item (index 10) to 4
+
+JavaScript automatically fills missing indices with empty slots
+
+Now array looks like:
+[1, 2, 3, <7 empty items>, 4]
+
+console.log(arr.length);
+
+Array length becomes 11 because highest index is 10 → length = 10 + 1 = 11
+
+console.log(arr);
+
+Logs the full array:
+[1, 2, 3, <7 empty items>, 4]`,
+    example: `const arr = [1, 2, 3];
+arr[10] = 4;
+console.log(arr.length);
+console.log(arr); 
+//output:11
+[ 1, 2, 3, <7 empty items>, 4 ]`,
+  },
+  {
+    id: 87,
+    question: `Deleting properties?`,
+    answer: `delete obj.a
+Deletes property a from the object.
+Returns true if deletion is successful.
+✅ Output: true
+
+obj.a
+After deletion, a no longer exists.
+✅ Output: undefined
+
+delete obj
+❌ You cannot delete variables declared with var, let, or const.
+delete only works on object properties, not declared variables.
+
+✅ Output: false
+`,
+    example: `const obj = { a: 1, b: 2};
+console.log(delete obj.a); // ✅ true
+console.log(obj.a);  // ✅ undefined
+console.log(delete obj);  // ❌ false`,
+  },
+  {
+    id: 88,
+    question: `How does length behave with default parameters?`,
+    answer: `The .length property of a function returns the number of parameters before the first one with a default value.
+// \`a\` and \`b\` have no default values → ✅ counted
+// \`c = 10\` has a default → ❌ not counted, and all after are ignored`,
+    example: `function test(a, b, c = 10) {}
+console.log(test.length); // 👉 2`,
+  },
 ];
 export default jsPracticeData;
