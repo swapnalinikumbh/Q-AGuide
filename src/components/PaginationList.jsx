@@ -42,6 +42,7 @@ export default function PaginationList({ module }) {
 
   const handleChange = (_, value) => {
     setPage(value);
+    sessionStorage.setItem("lastPage", value); // Save current page
     window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to top on page change
   };
 
@@ -49,12 +50,16 @@ export default function PaginationList({ module }) {
   const location = useLocation();
   useEffect(() => {
     const savedSearch = sessionStorage.getItem("lastSearch") || "";
+    const savedPage = parseInt(sessionStorage.getItem("lastPage"), 10) || 1;
     setSearch(savedSearch);
+    setPage(savedPage);
 
     const handleVisibilityChange = () => {
       if (!document.hidden) {
         const restored = sessionStorage.getItem("lastSearch") || "";
+        const restoredPage = parseInt(sessionStorage.getItem("lastPage"), 10) || 1;
         setSearch(restored);
+        setPage(restoredPage);
       }
     };
 
@@ -64,16 +69,14 @@ export default function PaginationList({ module }) {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
+
   useEffect(() => {
     setSearch(""); // Clear search when module changes
     setPage(1);
     sessionStorage.removeItem("lastSearch"); // Optional: remove stored search
+    sessionStorage.removeItem("lastPage"); // Add this to clear page
   }, [module]);
 
-  // useEffect(() => {
-  //   setSearch("");
-  //   setPage(1);
-  // }, [location.pathname]);
 
   const moduleData = datasetMap[module] || [];
 
