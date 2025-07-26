@@ -93,7 +93,11 @@ useEffect(() => { return () => clearInterval(timer); }, [dependency]);`,
 
 👉 Summary:
 - Controlled = React is the single source of truth (recommended).
-- Uncontrolled = DOM handles its own state (quick and less verbose).`,
+- Uncontrolled = DOM handles its own state (quick and less verbose).
+
+Use case: controlled:	Complex forms, validation	and uncontrolled: Simple forms, quick inputs
+
+`,
     example: `
 // ✅ Controlled Component
 function ControlledInput() {
@@ -166,8 +170,29 @@ function UncontrolledInput() {
   {
     id: 14,
     question: `What is Lazy Loading in React?`,
-    answer: `Lazy loading defers loading components, routes, or other assets until needed (e.g., navigation). This reduces initial bundle size and improves performance. Use React.lazy() along with Suspense for this.`,
-    example: "const LazyComp = React.lazy(() => import('./Comp'));",
+    answer: `Lazy loading defers loading components, routes, or other assets until needed (e.g., navigation). This reduces initial bundle size and improves performance. Use React.lazy() along with Suspense for this.
+    
+    🧠 Why It's Important:
+Without lazy loading:
+Your app bundles everything upfront
+Even components not immediately visible are loaded
+🚫 Slower page load, higher memory usage
+
+With lazy loading:
+Only the essential code loads initially
+Other components load on demand
+✅ Faster load time, lower bundle size
+
+`,
+    example: `const LazyComp = React.lazy(() => import('./Comp'));
+    
+    | Use Case                              | Benefit                                |
+| ------------------------------------- | -------------------------------------- |
+| **Routes (pages)**                    | Load page components only when visited |
+| **Modals, Tabs, Accordions**          | Load only when opened                  |
+| **Charts, Maps, Dashboards**          | Heavy libs load only when needed       |
+| **Images** (\`<img loading="lazy" />\`) | Save network and memory on scroll      |
+`,
   },
   {
     id: 15,
@@ -734,7 +759,17 @@ function App() {
   {
     id: 40,
     question: `What is React Router?`,
-    answer: `React Router is a routing library for React used to manage navigation between different views or pages. It enables Single Page Applications (SPA) to update the URL and UI without reloading the page. Core components include <BrowserRouter>, <Route>, <Link>, <Routes>. It also supports route parameters, nested routes, and dynamic routing.`,
+    answer: `React Router is a routing library for React used to manage navigation between different views or pages. It enables Single Page Applications (SPA) to update the URL and UI without reloading the page. Core components include <BrowserRouter>, <Route>, <Link>, <Routes>. It also supports route parameters, nested routes, and dynamic routing.
+    
+    | Feature       | Hook / Component            | Use                        |
+| ------------- | --------------------------- | -------------------------- |
+| Define routes | \`<Route />\` & \`<Routes />\`  | URL to component           |
+| Navigation    | \`<Link />\`, \`useNavigate()\` | Move between routes        |
+| Read params   | \`useParams()\`               | Read \`:id\` from URL        |
+| Nested routes | \`<Outlet />\`                | Render children components |
+| Redirect      | \`<Navigate />\`              | Conditional redirect       |
+| Catch-all/404 | path="\*"                   | Unknown routes handler     |
+`,
     example: `import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function Home() {
@@ -804,7 +839,14 @@ Keys must be unique among siblings and stable (not change between renders) to en
     question: "What is React.memo?",
     answer: `React.memo is a higher-order component that memoizes functional components. It prevents unnecessary re-renders when props haven't changed, improving performance. It performs a shallow comparison of props and re-renders only if they change.
 
-It’s useful for functional components that render the same output given the same props.`,
+It’s useful for functional components that render the same output given the same props.
+
+💡 When to Use?
+Components that are pure and render same output for same props
+
+Components with heavy UI or large lists
+
+Child components receiving props from parent`,
     example: `const MyComponent = React.memo(function MyComponent({ name }) {
   return <div>{name}</div>;
 });
@@ -1535,6 +1577,302 @@ Developer-friendly features & tooling`,
 | \`useCallback\` | ✅ Returns memoized fn  | ✅ If deps change  | Prevent re-creation         |
 `,
   },
+//   {
+//     id: 77,
+//     question: `uesContext hooks`,
+//     answer: `useContext is a React hook that lets you access values from a Context directly inside a functional component — without using <Context.Consumer>.
+
+// It helps share data (like theme, auth user, language, etc.) across the component tree without manually passing props at every level.
+
+// ✅ When to Use?
+// Share global data like user info, theme, auth state, language
+
+// Avoid prop drilling (passing props through many nested components)`,
+//     example: `// AuthContext.js
+// export const AuthContext = React.createContext(null);
+
+// // App.jsx
+// <AuthContext.Provider value={{ user: 'Swapnali', isLoggedIn: true }}>
+//   <Dashboard />
+// </AuthContext.Provider>
+
+// // Dashboard.jsx
+// const { user, isLoggedIn } = useContext(AuthContext);`,
+//   },
+//   {
+//     id: 78,
+//     question: `What is JWT (JSON Web Token) in React?`,
+//     answer: `JWT (JSON Web Token) is a secure, compact token format used to authenticate users between a client (like React) and a server (like Node.js).
+
+// It is widely used in token-based authentication to ensure that a user is who they say they are.
+
+// 🔗 Structure of a JWT:
+// A JWT has 3 parts, separated by . (dots): Header.Payload.Signature
+
+// ✅ How JWT Works in a React App
+// 1.Login Request:
+
+// User submits login form in React (email/password)
+
+// React sends a POST request to backend /login
+
+// 2.Backend Verifies and Returns Token:
+
+// If valid, backend responds with a signed JWT
+
+// 3.React Stores JWT:
+
+// React stores token in localStorage or sessionStorage
+
+// 4.Authenticated Requests:
+
+// React sends token in Authorization header for secure APIs
+
+// 5.Backend Validates Token:
+
+// Server verifies the signature and allows/denies access`,
+//     example: `| Practice                                 | Why It Matters             |
+// | ---------------------------------------- | -------------------------- |
+// | Always use HTTPS                         | Prevent token interception |
+// | Don't store in cookies (unless HttpOnly) | Avoid XSS                  |
+// | Set token expiration                     | Prevent long-lived access  |
+// | Use strong secret key                    | Protect from brute force   |
+
+// | Term       | Description                           |
+// | ---------- | ------------------------------------- |
+// | JWT        | A signed token for authentication     |
+// | Usage      | Login, verify, and authorize requests |
+// | Storage    | \`localStorage\` or \`sessionStorage\`    |
+// | Secure it? | Yes, use HTTPS and token expiry       |
+// `,
+//   },
+//   {
+//     id: 79,
+//     question: ``,
+//     answer: ``,
+//     example: ``,
+//   },
+//   {
+//     id: 80,
+//     question: `What is a Refresh Token in JWT Authentication? `,
+//     answer: `A Refresh Token is a special kind of token used to get a new access token after the current one expires, without requiring the user to log in again.
+
+// It is used alongside an Access Token to keep the user authenticated for a long session, securely.
+
+// | Access Token                     | Refresh Token                        |
+// | -------------------------------- | ------------------------------------ |
+// | Short-lived (e.g. 15 mins)       | Long-lived (e.g. 7 days, 30 days)    |
+// | Sent with every API call         | Used only when access token expires  |
+// | Stored in memory or localStorage | Stored in \`HttpOnly Cookie\` (secure) |
+
+// 🔧 How Refresh Token Flow Works:
+// 1.✅ User logs in
+// → Server issues Access Token + Refresh Token
+
+// 2.✅ React stores:
+
+// Access Token → localStorage or in-memory
+
+// Refresh Token → HttpOnly Cookie (secure, not accessible by JS)
+
+// 3.❌ Access Token expires
+// → React sends Refresh Token to /refresh-token
+
+// 4.✅ Server verifies Refresh Token
+// → Returns a new Access Token
+
+// 5.🔁 Process repeats until Refresh Token also expires
+
+// | Term          | Purpose                                                 | Lifetime         |
+// | ------------- | ------------------------------------------------------- | ---------------- |
+// | Access Token  | Authenticates API requests                              | Short (e.g. 15m) |
+// | Refresh Token | Used to get a new access token                          | Long (e.g. 7d)   |
+// | Storage       | Access: memory/localStorage; Refresh: cookie (HttpOnly) |                  |
+
+// ⚠️ Best Practices:
+// Store refresh token in HttpOnly cookies (to prevent XSS)
+
+// Use rotation: issue new refresh token every time
+
+// Blacklist refresh tokens on logout
+
+// Use refresh token endpoint only over HTTPS`,
+//     example: `[ React App ]
+//      |
+//      |— login —>
+//      |<— access + refresh tokens —
+//      |
+//      |— API call with access token —>
+//      |<— 401 Unauthorized (expired) —
+//      |
+//      |— request refresh token —>
+//      |<— new access token —
+//      |
+//      |— retry API call —>
+// `,
+//   },
+//   {
+//     id: 81,
+//     question: `Public route and privets route how to identify ?`,
+//     answer: `| Type              | Accessible To               | Examples                     |
+// | ----------------- | --------------------------- | ---------------------------- |
+// | **Public Route**  | Everyone (logged in or not) | Login, Register, Home        |
+// | **Private Route** | Only logged-in users        | Dashboard, Profile, Settings |
+
+
+// ✅ Goal:
+// We want to:
+// Show Public pages like /login to unauthenticated users only
+// Restrict Private pages like /dashboard to authenticated users only
+// `,
+//     example: `| Route Type    | Component Wrapper  | Redirects to                 |
+// | ------------- | ------------------ | ---------------------------- |
+// | Public Route  | \`<PublicRoute />\`  | To `/dashboard` if logged in |
+// | Private Route | \`<PrivateRoute />\` | To `/login` if not logged in |
+// `,
+//   },
+//   {
+//     id: 82,
+//     question: `Why Use Next.js Over Plain React?`,
+//     answer: `🔹 Quick Answer:
+// Next.js = React + Performance + SEO + Routing + Backend + Optimization built-in.
+
+// If you're using plain React and manually adding routing, SSR, APIs, image optimization, etc., Next.js gives it all out-of-the-box.
+
+// | React              | Next.js                        |
+// | ------------------ | ------------------------------ |
+// | \`react-router-dom\` | File-based routing (no config) |
+
+// Use Next.js when you want:
+// SEO optimization
+// Fast loading pages
+// Simpler routing
+// Full-stack capability (React + backend)
+// Production-ready features
+
+// Use React (CRA) when you:
+// Want full control
+// Are building small projects/tools
+// Don’t need SSR or SEO`,
+//     example: `| Feature                   | React (CRA)           | Next.js           |
+// | ------------------------- | --------------------- | ----------------- |
+// | Routing                   | Manual (react-router) | Auto file-based   |
+// | SSR / SSG                 | ❌                     | ✅                 |
+// | SEO support               | ❌                     | ✅                 |
+// | API routes                | ❌                     | ✅                 |
+// | Image Optimization        | ❌                     | ✅                 |
+// | Performance (Static HTML) | ❌                     | ✅                 |
+// | Deployment                | Manual                | 1-click on Vercel |
+// `,
+//   },
+//   {
+//     id: 83,
+//     question: `Single Page Application (SPA) vs Server-Side Rendering (SSR) – Explained for React/Next.js`,
+//     answer: `A Single Page Application (SPA) is a web app that loads a single HTML page, and dynamically updates content via JavaScript without refreshing the entire page.
+
+// 📌 React (CRA) is a typical SPA framework.
+// | Feature            | SPA (React)                          |
+// | ------------------ | ------------------------------------ |
+// | Page Load          | Loads once, then JS takes over       |
+// | Routing            | Handled client-side (\`react-router\`) |
+// | SEO                | ❌ Bad SEO (content loads via JS)     |
+// | Speed (after load) | ✅ Fast (no reload)                   |
+// | Initial Load       | ❌ Slower (JS-heavy)                  |
+
+// In Server-Side Rendering, the HTML for each page is rendered on the server and sent to the browser.
+
+// 📌 Next.js supports SSR out of the box.
+// | Feature       | SSR (Next.js)                       |
+// | ------------- | ----------------------------------- |
+// | Page Load     | HTML rendered on server per request |
+// | Routing       | File-based, rendered on demand      |
+// | SEO           | ✅ Great SEO (HTML ready on load)    |
+// | Speed         | ✅ Fast first load                   |
+// | JS Dependency | Works without JS (partial support)  |
+// `,
+//     example: `| Feature          | SPA (React)      | SSR (Next.js)              |
+// | ---------------- | ---------------- | -------------------------- |
+// | First Load Speed | ⏳ Slow           | ⚡ Fast                     |
+// | SEO Friendly     | ❌ No             | ✅ Yes                      |
+// | Full Page Reload | ❌ Never          | ✅ Happens if needed        |
+// | Best Use Case    | Dashboards, Apps | Blogs, E-commerce, Landing |
+
+// | Which One to Use You need...       | Choose              |
+// | ---------------------------------- | ------------------- |
+// | SEO, fast first load, public app   | ✅ **SSR (Next.js)** |
+// | JS-based dashboard, internal tools | ✅ **SPA (React)**   |
+// `,
+//   },
+//   {
+//     id: 84,
+//     question: `Next.js`,
+//     answer: `Next.js is a React framework that provides:
+// ✅ Server-side rendering (SSR)
+// ✅ Static site generation (SSG)
+// ✅ API routes (Backend inside frontend)
+// ✅ Built-in routing, SEO, image optimization, lazy loading
+// 👉 Think of it as React + Backend + SEO + Performance, all in one.
+
+// | Feature            | React (CRA) | Next.js      |
+// | ------------------ | ----------- | ------------ |
+// | SEO                | ❌           | ✅ SSR/SSG    |
+// | Routing            | Manual      | ✅ File-based |
+// | API (Backend)      | ❌           | ✅ API routes |
+// | Performance        | Basic       | ✅ Optimized  |
+// | Image Optimization | ❌           | ✅ Built-in   |
+// | Code Splitting     | Manual      | ✅ Automatic  |
+
+// 🚀 Core Features in One Line:
+// 1.File-based Routing:
+// pages/about.js → /about route automatically.
+
+// 2.Pre-rendering:
+// Use getServerSideProps() for SSR, or getStaticProps() for SSG.
+
+// 3.API Routes:
+// pages/api/user.js → http://localhost:3000/api/user
+
+// 4.Image Component:
+// Use next/image for optimized, lazy-loaded images.
+
+// 5.App Directory (New):
+// Next 13+ supports app/ directory for layouts, nested routing, and React Server Components.
+
+// `,
+//     example: `my-next-app/
+// ├── pages/
+// │   ├── index.js          ← Home Page
+// │   ├── about.js          ← /about route
+// │   └── api/
+// │       └── hello.js      ← /api/hello endpoint
+// ├── public/               ← Static assets (images, icons)
+// ├── styles/               ← CSS/SCSS files
+// └── next.config.js        ← Configuration
+
+// npx create-next-app@latest my-app
+// cd my-app
+// npm run dev`,
+//   },
+//   {
+//     id: 85,
+//     question: `Next.js Routing vs React Router DOM – Key Differences Explained`,
+//     answer: `| Feature        | **React (with react-router-dom)** | **Next.js**                              |
+// | -------------- | --------------------------------- | ---------------------------------------- |
+// | Routing system | Manual (you define routes)        | **File-based routing** (auto)            |
+// | Setup required | Yes (install + define routes)     | No setup — uses \`pages/\` folder          |
+// | Nested routes  | Manually using \`<Outlet />\`       | By folder nesting (\`pages/blog/[id].js\`) |
+// | Dynamic routes | \`/:id\` manually                   | \`[id].js\` automatically                  |
+// `,
+//     example: `| Feature         | React Router DOM    | Next.js Routing              |
+// | --------------- | ------------------- | ---------------------------- |
+// | Route config    | Manual              | File-based (auto)            |
+// | Code Splitting  | Manual              | Automatic                    |
+// | Dynamic Routes  | \`:param\`            | \`[param].js\`                 |
+// | Nested Routes   | \`<Outlet />\`        | Folder structure             |
+// | Middleware/Auth | Custom hook/context | Built-in middleware possible |
+// | SEO Friendly    | ❌ (CSR only)        | ✅ (SSR/SSG)                  |
+// `,
+//   },
 ];
 
 export default reactData;

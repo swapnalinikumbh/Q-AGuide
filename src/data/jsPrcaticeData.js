@@ -995,7 +995,7 @@ console.log(x);`,
     example: `const obj = { a: 1 };
 obj.a = 2;
 console.log(obj.a); // ✅ 2
-obj = { b: 3 };`,  // ❌ TypeError
+obj = { b: 3 };`, // ❌ TypeError
   },
   {
     id: 84,
@@ -1011,7 +1011,7 @@ JavaScript does string concatenation: NaN becomes "NaN" + " is a number".
 `,
     example: `console.log(NaN === NaN);            // ❌ false
 console.log(Object.is(NaN, NaN));    // ✅ true
-console.log(NaN + " is a number");   // ✅ "NaN is a number"`,  
+console.log(NaN + " is a number");   // ✅ "NaN is a number"`,
   },
   {
     id: 85,
@@ -1100,9 +1100,9 @@ console.log(delete obj);  // ❌ false`,
 console.log(test.length); // 👉 2`,
   },
   {
-    id:89,
-    question:`output of following`,
-    answer:`1.console.log('start')
+    id: 89,
+    question: `output of following`,
+    answer: `1.console.log('start')
 → Synchronous → runs immediately
 ✅ Output: start
 
@@ -1122,7 +1122,7 @@ console.log(test.length); // 👉 2`,
 
 6.Macrotasks (setTimeout) are processed afterward
 ✅ Output: timeout`,
-    example:`console.log('start');
+    example: `console.log('start');
 
 setTimeout(() => console.log('timeout'), 0);
 
@@ -1141,12 +1141,12 @@ Macrotask Queue
 Microtask Queue`,
   },
   {
-    id:90,
-    question:`Flatten a deeply nested array `,
-    answer:`If arr[i] is a number → push to result
+    id: 90,
+    question: `Flatten a deeply nested array `,
+    answer: `If arr[i] is a number → push to result
 If it's an array → recursively flatten it
 In the end, we return res`,
-    example:`let arr = [3, 2, [4, 5, [6, 8]], 8, 0];
+    example: `let arr = [3, 2, [4, 5, [6, 8]], 8, 0];
 
 function flattenarr(arr) {
   let res = [];
@@ -1267,11 +1267,38 @@ const even = arr.myFilter((num) => num % 2 === 0);
 console.log(even); // [2, 4]
 `,
   },
-  // {
-  //   id: 94,
-  //   question: ``,
-  //   answer: ``,
-  //   example: ``,
-  // },
+  {
+    id: 94,
+    question: `What is flatMap() in JavaScript?`,
+    answer: `flatMap() is a built-in array method that:
+👉 First maps each element using a callback,
+👉 Then flattens the result by one level.`,
+    example: `const arr = [1, 2, 3];
+const result = arr.flatMap(x => [x, x * 2]);
+console.log(result); // [1, 2, 2, 4, 3, 6]
+
+const arr = [1, [2, 3], 4];
+const res = arr.flatMap(x => x);
+console.log(res); // [1, 2, 3, 4] ✅
+`,
+  },
+  {
+    id: 95,
+    question: `What is the output of the following code?`,
+    answer: `The output of the code is:
+[1, 7, 3, 2, 1, 3, 4, 5, 6, 8, 6, 2, 9, 1, 7, 8, 4]
+The input array is deeply nested, and using flat(Infinity) flattens it completely, removing all levels of nesting.`,
+    example: `const input = [
+  1,
+  [7, [3, 2], [1, [3, [4]]]],
+  [5, [6, [8, [6]]]],
+  [2, [9, [1, [7, [8]]]]],
+  4
+];
+
+const flattened = input.flat(Infinity);
+console.log(flattened); // ➜ [1, 7, 3, 2, 1, 3, 4, 5, 6, 8, 6, 2, 9, 1, 7, 8, 4]
+`,
+  },
 ];
 export default jsPracticeData;

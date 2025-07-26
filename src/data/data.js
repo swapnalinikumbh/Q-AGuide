@@ -338,7 +338,15 @@ console.log("End");
   {
     id: 26,
     question: `What is debouncing?`,
-    answer: `Limits a function call until after wait time ends. event like resizing the browser window or typing in an input field. It helps reduce the number of function calls to improve performance and optimize`,
+    answer: `Limits a function call until after wait time ends. event like resizing the browser window or typing in an input field. It helps reduce the number of function calls to improve performance and optimize
+    
+    🧠 Core Debounce Logic
+User triggers an event (like typing or resizing).
+Timer starts (with setTimeout) for the specified delay.
+If another event triggers before the timer ends, the timer is cleared (with clearTimeout).
+When no new event occurs for the delay duration, the original function is executed.
+
+`,
     example: `function debounce(func, delay) {
   let timeoutId;
   return function (...args) {
@@ -992,12 +1000,34 @@ Used to create a private scope
   }
 }`,
   },
-  // {
-  //   id: 69,
-  //   question: ``,
-  //   answer: ``,
-  //   example: ``,
-  // },
+  {
+    id: 69,
+    question: `What is Caching?`,
+    answer: `Caching is the process of storing data so future requests for that data can be served faster, without fetching or computing it again.
+
+It helps improve:
+✅ Speed (no redundant API calls or calculations)
+✅ Performance (reduces load on browser/server)
+✅ User experience (instant responses)
+
+| Use Case                  | Cache Type           |
+| ------------------------- | -------------------- |
+| API results (static data) | Memory, localStorage |
+| User auth tokens          | localStorage         |
+| Filters, sort options     | SessionStorage       |
+| Images, CSS/JS files      | Browser Cache        |
+| Offline support for app   | Service Worker Cache |
+`,
+    example: `| Type                     | Where It's Stored            | Example                       |
+| ------------------------ | ---------------------------- | ----------------------------- |
+| **Memory Cache**         | In JS variables (RAM)        | Using \`Map\`, \`useRef\`, etc.   |
+| **Browser Cache**        | Browser-managed              | Images, CSS, JS from server   |
+| **LocalStorage**         | Persistent local storage     | User preferences, auth token  |
+| **SessionStorage**       | Per-tab storage              | Temporary forms, filters      |
+| **IndexedDB**            | Structured browser DB        | Offline apps, large datasets  |
+| **Service Worker Cache** | For PWAs and offline support | Caching responses to requests |
+`,
+  },
   // {
   //   id: 70,
   //   question: ``,
