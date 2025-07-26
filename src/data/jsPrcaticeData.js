@@ -1172,56 +1172,69 @@ console.log(flattenarr(arr)); // Output:
     id: 91,
     question: `Flatten a deeply nested array (manually)
 Count the total number of elements`,
-    answer: `If arr[i] is a number → push to result
-If it's an array → recursively flatten it
-In the end, we return res.length (i.e., total flat element count)`,
-    example: `let arr = [3, 2, [4, 5, [6, 8]], 8, 0];
+    answer: `It initializes an empty result array res.
 
-function flattenarr(arr) {
+It loops through each element of the input array:
+
+✅ If the element is a number, it adds it directly to res.
+
+🔁 If the element is another array, it calls flattenarr() recursively on that sub-array.
+
+It then merges (concat) the returned flattened values back into the res array.
+Finally, it returns the complete flattened array, and .length gives the total count.
+[3, 2, 4, 5, 6, 8, 8, 0]  → total elements = 8`,
+    example: `function flattenarr(arr) {
   let res = [];
 
   for (let i = 0; i < arr.length; i++) {
     if (typeof arr[i] === 'number') {
       res.push(arr[i]);
     } else if (Array.isArray(arr[i])) {
-      res = res.concat(flattenarr(arr[i])); // recursively flatten
+      res = res.concat(flattenarr(arr[i])); // merge arrays
     }
   }
 
-  return res.length;
+  return res;
 }
 
-console.log(flattenarr(arr)); // Output: 5
+let arr = [3, 2, [4, 5, [6, 8]], 8, 0];
+console.log(flattenarr(arr).length); // ✅ Output: 8
 `,
   },
   {
     id: 92,
     question: `Flatten a deeply nested array, Add null and undefined in arr then what will happen `,
-    answer: `typeof null is 'object'
-typeof undefined is 'undefined'
-This function ignores both since it's only pushing values where typeof === 'number'
-So result: [3, 2, 4, 5, 6, 8, 8, 0] → length = 5`,
-    example: `
-    
-let arr = [3, 2, [4, null, 5, [6, undefined, 8]], 8, 0];
+    answer: `You have an array with numbers, strings, nulls, and nested arrays:
+[3, 2, "null", [4, 5, [6, 8]], 8, 0, null].
+The function flattenarr() loops through each item. If the item is a nested array, it calls itself recursively to flatten it and merges the result using .concat(). If the item is not an array (like a number, string, or null), it pushes it directly into the result array. This means the function flattens all nested arrays into a single-level array while keeping all types of values unchanged. As a result, your output becomes:
+[3, 2, "null", 4, 5, 6, 8, 8, 0, null].
+It includes everything: numbers, string "null", and actual null, just in one flat list.`,
+    example: `let arr = [3, 2, "null", [4, 5, [6, 8]], 8, 0, null];
+
 function flattenarr(arr) {
   let res = [];
 
   for (let i = 0; i < arr.length; i++) {
     const item = arr[i];
 
-    if (typeof item === 'number') {
-      res.push(item);
-    } else if (Array.isArray(item)) {
-      res = res.concat(flattenarr(item));
+    if (Array.isArray(item)) {
+      res = res.concat(flattenarr(item)); // recursively flatten
+    } else {
+      res.push(item); // push any non-array value (number, string, null, etc.)
     }
-    // Ignore null and undefined
   }
 
-  return res.length;
+  return res;
 }
 
-console.log(flattenarr(arr)); // Output: 5`,
+console.log(flattenarr(arr));
+//Output:
+[
+  3,    2, 'null',
+  4,    5, 6,
+  8,    8, 0,
+  null
+]`,
   },
   {
     id: 93,
