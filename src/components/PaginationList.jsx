@@ -57,7 +57,8 @@ export default function PaginationList({ module }) {
     const handleVisibilityChange = () => {
       if (!document.hidden) {
         const restored = sessionStorage.getItem("lastSearch") || "";
-        const restoredPage = parseInt(sessionStorage.getItem("lastPage"), 10) || 1;
+        const restoredPage =
+          parseInt(sessionStorage.getItem("lastPage"), 10) || 1;
         setSearch(restored);
         setPage(restoredPage);
       }
@@ -77,18 +78,17 @@ export default function PaginationList({ module }) {
     sessionStorage.removeItem("lastPage"); // Add this to clear page
   }, [module]);
 
-
   const moduleData = datasetMap[module] || [];
-
   const filteredData = useMemo(() => {
-    if (search.trim() === "") {
-      return moduleData;
-    } else {
-      return allData.filter((item) =>
-        item.question.toLowerCase().includes(search.toLowerCase())
-      );
+    const trimmed = search.trim().toLowerCase();
+    if (trimmed === "") {
+      return moduleData; // fallback to current module data
     }
-  }, [search, module]);
+
+    return allData.filter((item) =>
+      item.question.toLowerCase().includes(trimmed)
+    );
+  }, [search, module, moduleData]);
 
   const totalPages = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
   const startIndex = (page - 1) * ITEMS_PER_PAGE;
@@ -137,7 +137,8 @@ export default function PaginationList({ module }) {
       {/* Card */}
       {currentData.map((item) => (
         <Card
-          key={item.id}
+          // key={item.id}
+          key={`${item.module}-${item.id}`}
           sx={{
             mb: 4,
             px: { xs: 1, sm: 2 },
