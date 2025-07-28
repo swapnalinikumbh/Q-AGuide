@@ -34,7 +34,7 @@ export default function Footer() {
           wordBreak: "break-word",
         }}
       >
-        © 2025 Q&A Prep — Designed by 💡 Swapnali
+        © 2025 Q&A Prep 
       </Typography>
     </Box>
   );
