@@ -34,7 +34,7 @@ export default function Footer() {
           wordBreak: "break-word",
         }}
       >
-        © 2025 Q&A Prep 
+       © 2025 Q&A Prep — Crack your next interview with confidence.
       </Typography>
     </Box>
   );
